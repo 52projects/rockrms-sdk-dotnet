@@ -11,8 +11,9 @@ namespace Rock.Api.Tests.People {
     public class GetTests : Base {
         [Test]
         public void people_get_tests_return_specific_person() {
-            var results = this.RockClient.PeopleRealm.People.Get("121");
-            results.Id.ShouldBe(121);
+            var people = this.RockClient.PeopleRealm.People.List();
+            var person = this.RockClient.PeopleRealm.People.Get(people[0].Id.ToString());
+            person.Id.ShouldBe(people[0].Id);
         }
 
         [Test]

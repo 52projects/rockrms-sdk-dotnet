@@ -10,7 +10,7 @@ using Newtonsoft.Json;
 namespace Rock.Api.Model {
     [Serializable]
     public class ApiModel {
-        [JsonProperty(PropertyName = "Id")]
+        [JsonProperty(PropertyName = "Id", NullValueHandling = NullValueHandling.Ignore)]
         public int? Id { get; set; }        
     }
 }

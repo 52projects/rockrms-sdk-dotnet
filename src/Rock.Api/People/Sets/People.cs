@@ -11,9 +11,9 @@ namespace Rock.Api.People.Sets {
         private const string LIST_URL = "api/People/";
         private const string GET_URL = "/api/people/{0}";
         private const string SEARCH_URL = "/api/people/";
-        private const string CREATE_URL = "/v1/people";
-        private const string EDIT_URL = "/v1/people/{0}";
-        private const string IMAGE_URL = "/v1/people/{0}/images";
+        private const string CREATE_URL = "/api/people";
+        private const string EDIT_URL = "/api/people/{0}";
+        private const string IMAGE_URL = "/api/people/{0}/images";
         private const string IMAGE_UPDATE_URL = "/v1/people/{0}/images/{1}";
 
         public People(string baseUrl, string apiToken) : base(baseUrl, apiToken, ContentType.JSON) { }

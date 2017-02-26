@@ -62,6 +62,8 @@
     <Compile Include="Model\Collection.cs" />
     <Compile Include="Model\F1Collection.cs" />
     <Compile Include="Model\ParentObject.cs" />
+    <Compile Include="People\Enum\EmailPreference.cs" />
+    <Compile Include="People\Enum\Gender.cs" />
     <Compile Include="People\Model\Person.cs" />
     <Compile Include="People\QueryObject\PersonQO.cs" />
     <Compile Include="People\Sets\People.cs" />
@@ -70,11 +72,9 @@
     <Compile Include="RockClient.cs" />
     <Compile Include="Sets\ApiSet.cs" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="People\Enum\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

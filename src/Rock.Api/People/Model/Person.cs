@@ -6,9 +6,17 @@ using System.Threading.Tasks;
 using Rock.Api.Model;
 using System.Xml;
 using System.Xml.Serialization;
+using Rock.Api.People.Enum;
+using Newtonsoft.Json;
 
 namespace Rock.Api.People.Model {
     public class Person : ApiModel {
+        public Person() {
+            this.EmailPreference = EmailPreference.EmailAllowed;
+            this.Gender = Gender.Unknown;
+        }
+
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public string Guid { get; set; }
         public int? ForeignId { get; set; }
         public string ForeignGuid { get; set; }
@@ -21,7 +29,7 @@ namespace Rock.Api.People.Model {
         public int? ConnectionStatusValueId { get; set; }
         public int? ReviewReasonValueId { get; set; }
         public bool IsDeceased { get; set; }
-        public int TitleValueId { get; set; }
+        public int? TitleValueId { get; set; }
         public string FirstName { get; set; }
         public string NickName { get; set; }
 
@@ -32,7 +40,7 @@ namespace Rock.Api.People.Model {
         public int? BirthDay { get; set; }
         public int? BirthMonth { get; set; }
         public int? BirthYear { get; set; }
-        public int? Gender { get; set; }
+        public Gender Gender { get; set; }
 
         public int? MaritalStatusValueId { get; set; }
         public DateTime? AnniversaryDate { get; set; }
@@ -43,7 +51,7 @@ namespace Rock.Api.People.Model {
         public string Email { get; set; }
         public bool IsEmailActive { get; set; }
         public string EmailNote { get; set; }
-        public int? EmailPreference { get; set; }
+        public EmailPreference EmailPreference { get; set; }
         public string ReviewReasonNote { get; set; }
         public string InactiveReasonNote { get; set; }
         public string SystemNote { get; set; }
@@ -53,6 +61,7 @@ namespace Rock.Api.People.Model {
         public List<string> PhoneNumbers { get; set; }
 
         [XmlIgnore]
+        [JsonIgnore]
         public DateTime? BirthDate {
             get {
                 if (BirthYear.HasValue) {
@@ -61,6 +70,18 @@ namespace Rock.Api.People.Model {
 
                 return null;
             }
+        }
+
+        public bool ShouldSerializeGivingLeaderId() {
+            return false;
+        }
+
+        public bool ShouldSerializeUsers() {
+            return false;
+        }
+
+        public bool ShouldSerializePhoneNumbers() {
+            return false;
         }
     }
 }

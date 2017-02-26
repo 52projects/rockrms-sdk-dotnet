@@ -58,6 +58,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="People\CreateTests.cs" />
     <Compile Include="People\GetTests.cs" />
     <Compile Include="People\ListTests.cs" />
     <Compile Include="Base.cs" />
@@ -65,13 +66,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Rock.Api\Rock.Api.csproj">
       <Project>{9be2f0f5-7d8a-4bc9-a5f5-4b0447e0f5ef}</Project>
       <Name>Rock.Api</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
