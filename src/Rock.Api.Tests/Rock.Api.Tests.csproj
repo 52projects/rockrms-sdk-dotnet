@@ -63,6 +63,8 @@
     <Compile Include="People\ListTests.cs" />
     <Compile Include="Base.cs" />
     <Compile Include="People\SearchTests.cs" />
+    <Compile Include="PhoneNumbers\CreateTests.cs" />
+    <Compile Include="PhoneNumbers\ListTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -28,6 +28,16 @@ namespace Rock.Api.Realms {
                 return _peopleSet;
             }
         }
+
+        private Rock.Api.People.Sets.PhoneNumbers _phoneNumbersSet;
+        public Rock.Api.People.Sets.PhoneNumbers PhoneNumbers {
+            get {
+                if (_phoneNumbersSet == null) {
+                    _phoneNumbersSet = new People.Sets.PhoneNumbers(this._domainUrl, this._apiToken);
+                }
+                return _phoneNumbersSet;
+            }
+        }
         #endregion Sets
     }
 }

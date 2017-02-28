@@ -14,6 +14,7 @@ namespace Rock.Api.People.Model {
         public Person() {
             this.EmailPreference = EmailPreference.EmailAllowed;
             this.Gender = Gender.Unknown;
+            this.PhoneNumbers = new List<PhoneNumber>();
         }
 
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
@@ -58,7 +59,7 @@ namespace Rock.Api.People.Model {
         public int? ViewCount { get; set; }
         public int? PrimaryAliasId { get; set; }
         public List<string> Users { get; set; }
-        public List<string> PhoneNumbers { get; set; }
+        public List<PhoneNumber> PhoneNumbers { get; set; }
 
         [XmlIgnore]
         [JsonIgnore]

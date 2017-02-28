@@ -15,11 +15,5 @@ namespace Rock.Api.Tests.People {
             var person = this.RockClient.PeopleRealm.People.Get(people[0].Id.ToString());
             person.Id.ShouldBe(people[0].Id);
         }
-
-        [Test]
-        public void people_get_tests_return_specific_person_by_email() {
-            var results = this.RockClient.PeopleRealm.People.GetByEmail("chadmeyer@52projectsllc.com");
-            results.Id.ShouldBe(121);
-        }
     }
 }

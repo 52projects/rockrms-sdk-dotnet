@@ -14,7 +14,8 @@ namespace Rock.Api.Tests.People {
         public void create_tests_create_person() {
             var person = new Person {
                 FirstName = "Chad",
-                LastName = "Meyer"
+                LastName = "Meyer",
+                Email = "chadmeyer@52projectsllc.com"
             };
             var outPutXml = string.Empty;
             var result = this.RockClient.PeopleRealm.People.Create(person, out outPutXml);

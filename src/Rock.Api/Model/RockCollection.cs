@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Xml.Serialization;
 
 namespace Rock.Api.Model {
-    public class F1Collection<T> {
-        public F1Collection() {
+    public class RockCollection<T> {
+        public RockCollection() {
             this.Items = new List<T>();
         }
 

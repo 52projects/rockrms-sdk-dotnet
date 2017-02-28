@@ -14,5 +14,11 @@ namespace Rock.Api.Tests.People {
             var results = this.RockClient.PeopleRealm.People.List();
             results.Count().ShouldBeGreaterThan(0);
         }
+
+        [Test]
+        public void people_get_tests_return_specific_person_by_email() {
+            var results = this.RockClient.PeopleRealm.People.FindByEmail("chadmeyer@52projectsllc.com");
+            results.Items.Count().ShouldBeGreaterThan(0);
+        }
     }
 }

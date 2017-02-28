@@ -19,6 +19,9 @@ namespace Rock.Api.People.QueryObject {
         [QOIgnore()]
         public string Name { get; set; }
 
+        [QOIgnore()]
+        public string Email { get; set; }
+
         /// <summary>
         /// After the search options have been created, a filter is created to send to Rock
         /// </summary>
@@ -29,13 +32,16 @@ namespace Rock.Api.People.QueryObject {
                 if (this.ID.HasValue) {
                     filterList.Add("Id eq " + this.ID.Value);
                 }
+                if (!string.IsNullOrEmpty(this.Email)) {
+                    filterList.Add("Email eq '" + this.Email + "'");
+                }
                 if (!string.IsNullOrEmpty(this.Name)) {
                     var commaIndex = this.Name.IndexOf(',');
                     var spaceIndex = this.Name.IndexOf(' ');
 
                     // Only one word so assume first name
                     if (commaIndex < 0 && spaceIndex < 0) {
-                        filterList.Add("startswith(FirstName, '" + this.Name + "'");
+                        filterList.Add("startswith(FirstName, '" + this.Name + "')");
                     }
                     else {
                         if (commaIndex > 0 && commaIndex < spaceIndex) {

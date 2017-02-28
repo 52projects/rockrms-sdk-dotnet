@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Rock.Api.People.Model;
 using Rock.Api.People.QueryObject;
+using Rock.Api.Model;
 
 namespace Rock.Api.People.Sets {
     public class People : ApiSet<Model.Person> {
@@ -44,30 +45,22 @@ namespace Rock.Api.People.Sets {
 
         public override Person Get(string id) {
             var qo = new PersonQO { ID = int.Parse(id) };
-            var request = this.CreateRestRequest(RestSharp.Method.GET, "api/People/");
-            foreach (var pair in qo.ToDictionary()) {
-                request.AddQueryParameter(pair.Key, pair.Value);
-            }
-            //request.AddParameter("id", id);
-            var response = this.ExecuteCustomRequest<List<Person>>(request);
-            if (response.Data.Count() == 1) {
-                return response.Data[0];
+            var response = base.FindBy(qo);
+            if (response.Items.Count == 1) {
+                return response.Items.First();
             }
             return null;
         }
 
-        public Model.Person GetWithDetails(string id) {
-            var request = this.CreateRestRequest(RestSharp.Method.GET, "api/People(" + id + ")");
-            request.AddParameter("includeDetails", true);
-            //request.AddParameter("id", id);
-            var response = this.ExecuteRequest(request);
-            return response.Data;
+        public RockCollection<Model.Person> FindByEmail(string email) {
+            var qo = new PersonQO { Email = email };
+            var response = base.FindBy(qo);
+            return response;
         }
 
-        public Model.Person GetByEmail(string email) {
-            var request = this.CreateRestRequest(RestSharp.Method.GET, "api/People/GetByEmail/" + email);
-            var response = this.ExecuteRequest(request);
-            return response.Data;
+        private RockCollection<Model.Person> FindAll(PersonQO qo) {
+            var response = base.FindBy(qo);
+            return response;
         }
     }
 }
