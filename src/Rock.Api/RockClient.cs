@@ -12,6 +12,7 @@ namespace Rock.Api {
         private string _apiToken;
 
         public Rock.Api.Realms.Person PeopleRealm;
+        public Rock.Api.Realms.Group GroupRealm;
         #endregion declarations
 
         /// <summary>
@@ -24,6 +25,7 @@ namespace Rock.Api {
             this._apiToken = apiToken;
 
             this.PeopleRealm = new Realms.Person(domainUrl, apiToken);
+            this.GroupRealm = new Realms.Group(domainUrl, apiToken);
         }
     }
 }

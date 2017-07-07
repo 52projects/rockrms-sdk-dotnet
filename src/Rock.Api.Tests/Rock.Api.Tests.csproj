@@ -58,13 +58,18 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="People\CreateTests.cs" />
-    <Compile Include="People\GetTests.cs" />
-    <Compile Include="People\ListTests.cs" />
+    <Compile Include="GroupsRealm\GroupLocations\ListTests.cs" />
+    <Compile Include="GroupsRealm\GroupMembers\ListTests.cs" />
+    <Compile Include="GroupsRealm\Groups\GetTests.cs" />
+    <Compile Include="GroupsRealm\Groups\ListTests.cs" />
+    <Compile Include="PeopleRealm\Locations\ListTests.cs" />
+    <Compile Include="PeopleRealm\People\CreateTests.cs" />
+    <Compile Include="PeopleRealm\People\GetTests.cs" />
+    <Compile Include="PeopleRealm\People\ListTests.cs" />
     <Compile Include="Base.cs" />
-    <Compile Include="People\SearchTests.cs" />
-    <Compile Include="PhoneNumbers\CreateTests.cs" />
-    <Compile Include="PhoneNumbers\ListTests.cs" />
+    <Compile Include="PeopleRealm\People\SearchTests.cs" />
+    <Compile Include="PeopleRealm\PhoneNumbers\CreateTests.cs" />
+    <Compile Include="PeopleRealm\PhoneNumbers\ListTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
