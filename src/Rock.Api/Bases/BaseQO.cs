@@ -47,7 +47,7 @@ namespace Rock.Api {
                             DateTime? d = value as Nullable<DateTime>;
                             if (d != null) { // DateTime need special handling for converting to string.
                                 string format = GetFormat(p);
-                                ret.Add(GetKey(p), d.Value.ToString(format == null ? "yyyy-MM-dd" : format));
+                                ret.Add(GetKey(p), d.Value.ToString(format ?? "yyyy-MM-dd"));
                             }
                             else {
                                 ret.Add(GetKey(p), value.ToString());

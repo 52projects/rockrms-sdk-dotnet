@@ -12,13 +12,15 @@ namespace Rock.Api.Tests.People {
         [Test]
         public void people_list_tests_return_people() {
             var results = this.RockClient.PeopleRealm.People.List();
-            results.Count().ShouldBeGreaterThan(0);
+            results.IsSuccessful.ShouldBe(true);
+            results.Data.Count().ShouldBeGreaterThan(0);
         }
 
         [Test]
         public void people_get_tests_return_specific_person_by_email() {
-            var results = this.RockClient.PeopleRealm.People.FindByEmail("chadmeyer@52projectsllc.com");
-            results.Items.Count().ShouldBeGreaterThan(0);
+            var results = this.RockClient.PeopleRealm.People.FindByEmail("ted@rocksolidchurchdemo.com");
+            results.IsSuccessful.ShouldBe(true);
+            results.Data.Items.Count().ShouldBeGreaterThan(0);
         }
     }
 }

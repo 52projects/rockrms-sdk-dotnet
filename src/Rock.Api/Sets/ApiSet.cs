@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Rock.Api.Model;
 
 using RestSharp;
+using Rock.Api.Model;
+using Rock.Api.Extensions;
 
 
 namespace Rock.Api {
@@ -14,7 +16,7 @@ namespace Rock.Api {
             : base(baseUrl, apiToken, contentType) {
         }
 
-        public virtual RockCollection<T> FindAll(int? page = null, int? pageSize = null) {
+        public virtual IRockResponse<RockCollection<T>> FindAll(int? page = null, int? pageSize = null) {
             var collection = new RockCollection<T>();
 
             if (string.IsNullOrWhiteSpace(ListUrl)) {
@@ -32,12 +34,10 @@ namespace Rock.Api {
             }
 
             var item = base.ExecuteListRequest(request);
-            collection.Items.AddRange(item.Data);
-
-            return collection;
+            return item.ToRockCollectionResponse();
         }
 
-        public virtual RockCollection<T> FindAll(string parentID) {
+        public virtual IRockResponse<RockCollection<T>> FindAll(string parentID) {
             var collection = new RockCollection<T>();
 
             if (string.IsNullOrWhiteSpace(GetChildListUrl)) {
@@ -46,12 +46,10 @@ namespace Rock.Api {
 
             var request = CreateRestRequest(Method.GET, string.Format(GetChildListUrl, parentID));
             var item = ExecuteListRequest(request);
-            collection.Items.AddRange(item.Data);
-
-            return collection;
+            return item.ToRockCollectionResponse();
         }
 
-        public virtual RockCollection<T> FindAll(string parentID, int? page = null) {
+        public virtual IRockResponse<RockCollection<T>> FindAll(string parentID, int? page = null) {
             var collection = new RockCollection<T>();
 
             if (string.IsNullOrWhiteSpace(GetChildListUrl)) {
@@ -65,12 +63,10 @@ namespace Rock.Api {
             }
             
             var item = ExecuteListRequest(request);
-            collection.Items.AddRange(item.Data);
-
-            return collection;
+            return item.ToRockCollectionResponse();
         }
 
-        public virtual RockCollection<T> FindBy(BaseQO qo) {
+        public virtual IRockResponse<RockCollection<T>> FindBy(BaseQO qo) {
             var collection = new RockCollection<T>();
 
             if (string.IsNullOrWhiteSpace(SearchUrl)) {
@@ -84,12 +80,10 @@ namespace Rock.Api {
             }
 
             var item = ExecuteListRequest(request);
-            collection.Items.AddRange(item.Data);
-
-            return collection;
+            return item.ToRockCollectionResponse();
         }
 
-        public virtual RockCollection<T> FindBy(string parentID, BaseQO qo) {
+        public virtual IRockResponse<RockCollection<T>> FindBy(string parentID, BaseQO qo) {
             var collection = new RockCollection<T>();
 
             if (string.IsNullOrWhiteSpace(SearchUrl)) {
@@ -103,9 +97,7 @@ namespace Rock.Api {
             }
 
             var item = ExecuteListRequest(request);
-            collection.Items.AddRange(item.Data);
-
-            return collection;
+            return item.ToRockCollectionResponse();
         }
     }
 }

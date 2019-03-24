@@ -8,8 +8,8 @@ using Rock.Api.People.Sets;
 namespace Rock.Api {
     public class RockClient {
         #region declarations
-        private string _domainUrl;
-        private string _apiToken;
+        private readonly string _domainUrl;
+        private readonly string _apiToken;
 
         public Rock.Api.Realms.Person PeopleRealm;
         public Rock.Api.Realms.Group GroupRealm;

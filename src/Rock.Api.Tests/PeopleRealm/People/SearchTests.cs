@@ -14,9 +14,11 @@ namespace Rock.Api.Tests.People {
         [Test]
         public void people_search_tests_search_by_name_include_details() {
             var qo = new PersonQO();
-            qo.Name = "foc test";
+            qo.Name = "ted dec";
             var results = this.RockClient.PeopleRealm.People.Search<List<Person>>(qo);
-            results.Count().ShouldBeGreaterThan(0);
+
+            results.IsSuccessful.ShouldBe(true);
+            results.Data.Count().ShouldBeGreaterThan(0);
         }
     }
 }

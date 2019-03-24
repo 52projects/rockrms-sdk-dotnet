@@ -14,7 +14,7 @@ namespace Rock.Api.Tests.PhoneNumbers {
         [Test]
         public void phonenumbers_create_tests_create_phone_for_person() {
             var results = this.RockClient.PeopleRealm.People.FindByEmail("chadmeyer@52projectsllc.com");
-            var person = results.Items[0];
+            var person = results.Data.Items[0];
 
             var phone = new PhoneNumber {
                 Number = "6822091225",
@@ -24,7 +24,7 @@ namespace Rock.Api.Tests.PhoneNumbers {
 
             var outPutXml = string.Empty;
             var result = this.RockClient.PeopleRealm.PhoneNumbers.Create(phone, out outPutXml);
-            result.Id.ShouldNotBe(null);
+            result.Data.Id.ShouldNotBe(null);
         }
     }
 }

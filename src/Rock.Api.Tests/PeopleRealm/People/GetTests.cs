@@ -12,8 +12,8 @@ namespace Rock.Api.Tests.People {
         [Test]
         public void people_get_tests_return_specific_person() {
             var people = this.RockClient.PeopleRealm.People.List();
-            var person = this.RockClient.PeopleRealm.People.Get(people[0].Id.ToString());
-            person.Id.ShouldBe(people[0].Id);
+            var person = this.RockClient.PeopleRealm.People.Get(people.Data[0].Id.ToString());
+            person.Data.Id.ShouldBe(people.Data[0].Id);
         }
     }
 }

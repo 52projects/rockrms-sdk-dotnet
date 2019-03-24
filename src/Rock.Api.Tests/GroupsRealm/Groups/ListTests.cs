@@ -12,13 +12,13 @@ namespace Rock.Api.Tests.Groups {
         [Test]
         public void groups_list_tests_get_by_family_id() {
             var results = this.RockClient.GroupRealm.Groups.List();
-            results.Count().ShouldBeGreaterThan(0);
+            results.Data.Count().ShouldBeGreaterThan(0);
         }
 
         [Test]
         public void groups_list_get_families_by_person() {
             var results = this.RockClient.GroupRealm.Groups.GetFamilies(122);
-            results.Count().ShouldBeGreaterThan(0);
+            results.Data.Count().ShouldBeGreaterThan(0);
         }
     }
 }

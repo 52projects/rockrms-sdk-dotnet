@@ -24,7 +24,7 @@ namespace Rock.Api.Groups.Sets {
 
         protected override string ListUrl { get { return LIST_URL; } }
 
-        public RockCollection<GroupLocation> GetByGroupID(int groupID) {
+        public IRockResponse<RockCollection<GroupLocation>> GetByGroupID(int groupID) {
             var qo = new GroupLocationQO { GroupId = groupID };
             return base.FindBy(qo);
         }

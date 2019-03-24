@@ -43,22 +43,18 @@ namespace Rock.Api.People.Sets {
             var response = this.ExecuteGenericRequest(request);
         }
 
-        public override Person Get(string id) {
+        public IRockResponse<RockCollection<Person>> GetByID(string id) {
             var qo = new PersonQO { ID = int.Parse(id) };
-            var response = base.FindBy(qo);
-            if (response.Items.Count == 1) {
-                return response.Items.First();
-            }
-            return null;
+            return base.FindBy(qo);
         }
 
-        public RockCollection<Model.Person> FindByEmail(string email) {
+        public IRockResponse<RockCollection<Person>> FindByEmail(string email) {
             var qo = new PersonQO { Email = email };
             var response = base.FindBy(qo);
             return response;
         }
 
-        private RockCollection<Model.Person> FindAll(PersonQO qo) {
+        private IRockResponse<RockCollection<Person>> FindAll(PersonQO qo) {
             var response = base.FindBy(qo);
             return response;
         }

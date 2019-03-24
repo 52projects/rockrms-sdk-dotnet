@@ -24,7 +24,7 @@ namespace Rock.Api.People.Sets {
 
         protected override string ListUrl { get { return LIST_URL; } }
 
-        public RockCollection<Model.PhoneNumber> FindByNumber(string number) {
+        public IRockResponse<RockCollection<PhoneNumber>> FindByNumber(string number) {
             var qo = new PhoneNumberQO { Number = number };
             var response = base.FindBy(qo);
             return response;

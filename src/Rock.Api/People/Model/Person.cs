@@ -17,11 +17,6 @@ namespace Rock.Api.People.Model {
             this.PhoneNumbers = new List<PhoneNumber>();
         }
 
-        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public string Guid { get; set; }
-        public int? ForeignId { get; set; }
-        public string ForeignGuid { get; set; }
-        public string ForeignKey { get; set; }
         public bool IsSystem { get; set; }
         public int? RecordTypeValueId { get; set; }
         public int? RecordStatusValueId { get; set; }
@@ -46,16 +41,30 @@ namespace Rock.Api.People.Model {
         public int? GraduationYear { get; set; }
         public int? GivingGroupId { get; set; }
         public string GivingId { get; set; }
-        public int? GivingLeaderId { get; set; }
+        public int GivingLeaderId { get; set; }
         public string Email { get; set; }
         public bool IsEmailActive { get; set; }
         public string EmailNote { get; set; }
         public EmailPreference EmailPreference { get; set; }
+
+        public CommunicationType CommunicationPreference { get; set; }
+
         public string ReviewReasonNote { get; set; }
         public string InactiveReasonNote { get; set; }
         public string SystemNote { get; set; }
-        public int? ViewCount { get; set; }
-        public int? PrimaryAliasId { get; set; }
+        public int? ViewedCount { get; set; }
+
+        public string TopSignalColor { get; set; }
+
+        public string TopSignalIconCssClass { get; set; }
+
+        public int? TopSignalId { get; set; }
+
+        public AgeClassification AgeClassification { get; set; }
+
+        public bool IsLockedAsChild { get; set; }
+        public int? PrimaryFamilyId { get; set; }
+        public DateTime? DeceasedDate { get; set; }
         public List<string> Users { get; set; }
         public List<PhoneNumber> PhoneNumbers { get; set; }
 

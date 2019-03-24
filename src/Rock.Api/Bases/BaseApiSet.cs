@@ -8,6 +8,7 @@ using RestSharp.Authenticators;
 using Rock.Api.Extensions;
 using Rock.Api.Exceptions;
 using System.IO;
+using Rock.Api.Model;
 
 
 namespace Rock.Api {
@@ -75,17 +76,17 @@ namespace Rock.Api {
         #endregion Constructor
 
         #region Actions
-        public virtual List<T> List() {
+        public virtual IRockResponse<List<T>> List() {
             if (string.IsNullOrWhiteSpace(ListUrl)) {
                 throw new NotImplementedException("The property ListUrl has no value on the ApiSet.");
             }
 
             var request = CreateRestRequest(Method.GET, ListUrl);
             var item = ExecuteListRequest(request);
-            return item.Data;
+            return item.ToRockResponse();
         }
 
-        public virtual List<T> List(string parentID) {
+        public virtual IRockResponse<List<T>> List(string parentID) {
             if (string.IsNullOrWhiteSpace(GetChildListUrl)) {
                 throw new NotImplementedException("The property GetChildListUrl has no value on the ApiSet.");
             }
@@ -93,24 +94,24 @@ namespace Rock.Api {
             var request = CreateRestRequest(Method.GET, string.Format(GetChildListUrl, parentID));
             var item = ExecuteListRequest(request);
 
-            return item.Data;
+            return item.ToRockResponse();
         }
 
-        public List<S> ListBySuffixUrl<S>(string url) where S : new() {
+        public IRockResponse<List<S>> ListBySuffixUrl<S>(string url) where S : new() {
             var request = CreateRestRequest(Method.GET, url);
             var item = ExecuteCustomRequest<List<S>>(request);
 
-            return item.Data;
+            return item.ToRockResponse();
         }
 
-        public virtual T Get(string id) {
+        public virtual IRockResponse<T> Get(string id) {
             if (string.IsNullOrWhiteSpace(GetUrl)) {
                 throw new NotImplementedException("The property GetUrl has no value on the ApiSet.");
             }
             var request = CreateRestRequest(Method.GET, string.Format(GetUrl, id));
             var item = ExecuteRequest(request);
 
-            return item.Data;
+            return item.ToRockResponse();
         }
 
         /// <summary>
@@ -119,7 +120,7 @@ namespace Rock.Api {
         /// <param name="parentID">The parent ID</param>
         /// <param name="id">The child ID</param>
         /// <returns>Returns a generic object (T)</returns>
-        public virtual T Get(string parentID, string id) {
+        public virtual IRockResponse<T> Get(string parentID, string id) {
             if (string.IsNullOrWhiteSpace(GetChildUrl)) {
                 throw new NotImplementedException("The property GetChildUrl has no value on the ApiSet.");
             }
@@ -127,31 +128,24 @@ namespace Rock.Api {
             var request = CreateRestRequest(Method.GET, string.Format(GetChildUrl, parentID, id));
             var item = ExecuteRequest(request);
 
-            return item.Data;
+            return item.ToRockResponse();
         }
 
-        public virtual T GetByUrl(string url) {
+        public virtual IRockResponse<T> GetByUrl(string url) {
             var request = CreateRestRequest(Method.GET, url.Substring(_baseUrl.Length));
             var item = ExecuteRequest(request);
 
-            return item.Data;
+            return item.ToRockResponse();
         }
 
-        public virtual S GetBySuffixUrl<S>(string url) where S : new() {
+        public virtual IRockResponse<S> GetBySuffixUrl<S>(string url) where S : new() {
             var request = CreateRestRequest(Method.GET, url);
             var item = ExecuteCustomRequest<S>(request);
 
-            return item.Data;
+            return item.ToRockResponse();
         }
 
-        public virtual string GetBySuffixUrl(string url) {
-            var request = CreateRestRequest(Method.GET, url);
-            var item = ExecuteGenericRequest(request);
-
-            return item.Content;
-        }
-
-        public virtual S Search<S>(BaseQO qo) where S : new() {
+        public virtual IRockResponse<S> Search<S>(BaseQO qo) where S : new() {
             if (string.IsNullOrWhiteSpace(SearchUrl)) {
                 throw new NotImplementedException("The property SearchUrl has no value on the ApiSet.");
             }
@@ -162,7 +156,7 @@ namespace Rock.Api {
             }
 
             var list = ExecuteCustomRequest<S>(request);
-            return list.Data;
+            return list.ToRockResponse<S>();
         }
 
         public virtual IRestResponse Post(string url) {
@@ -174,7 +168,7 @@ namespace Rock.Api {
             return response;
         }
 
-        public virtual bool Create(byte[] stream, string url = "") {
+        public virtual IRockResponse Create(byte[] stream, string url = "") {
             var targetUrl = string.Empty;
             if (!string.IsNullOrWhiteSpace(url)) {
                 if (url.Trim().Length <= _baseUrl.Length) {
@@ -191,10 +185,10 @@ namespace Rock.Api {
             var request = this.CreateRestRequest(Method.POST, targetUrl);
             request.AddFile("stream", stream, "photo.jpg", "image/jpeg");
             var item = ExecuteRequest(request);
-            return (int)item.StatusCode < 300;
+            return item.ToRockResponse();
         }
 
-        public virtual T Create(byte[] stream, string url = "", string fileParamaterName = "stream", string fileName = "", string fileType = "") {
+        public virtual IRockResponse<T> Create(byte[] stream, string url = "", string fileParamaterName = "stream", string fileName = "", string fileType = "") {
             var targetUrl = string.Empty;
             if (!string.IsNullOrWhiteSpace(url)) {
                 if (url.Trim().Length <= _baseUrl.Length) {
@@ -212,10 +206,10 @@ namespace Rock.Api {
             request.AddFile(fileParamaterName, stream, fileName, fileType);
 
             var response = this.ExecuteRequest(request);
-            return response.Data;
+            return response.ToRockResponse<T>();
         }
 
-        public virtual bool Create<S>(S entity, string url = "") where S : new() {
+        public virtual IRockResponse Create<S>(S entity, string url = "") where S : new() {
             var targetUrl = string.Empty;
 
             if (!string.IsNullOrWhiteSpace(url)) {
@@ -247,10 +241,10 @@ namespace Rock.Api {
             }
 
             var item = ExecuteRequest(request);
-            return (int)item.StatusCode < 300;
+            return item.ToRockResponse();
         }
 
-        public virtual T Create(T entity, string url = "") {
+        public virtual IRockResponse<T> Create(T entity, string url = "") {
             var targetUrl = string.Empty;
 
             if (!string.IsNullOrWhiteSpace(url)) {
@@ -282,10 +276,10 @@ namespace Rock.Api {
             }
 
             var item = ExecuteRequest(request);
-            return item.Data;
+            return item.ToRockResponse<T>();
         }
 
-        public virtual T Create(T entity, out string requestXml, string url = "") {
+        public virtual IRockResponse<T> Create(T entity, out string requestXml, string url = "") {
             requestXml = entity.ToXml();
             var targetUrl = string.Empty;
 
@@ -314,10 +308,10 @@ namespace Rock.Api {
             }
 
             var item = ExecuteRequest(request);
-            return item.Data;
+            return item.ToRockResponse();
         }
 
-        public virtual bool Update(byte[] stream, string url = "", string filename = "", string fileType = "") {
+        public virtual IRockResponse Update(byte[] stream, string url = "", string filename = "", string fileType = "") {
             var targetUrl = string.Empty;
             if (!string.IsNullOrWhiteSpace(url)) {
                 if (url.Trim().Length <= _baseUrl.Length) {
@@ -335,10 +329,10 @@ namespace Rock.Api {
             request.AddFile("stream", stream, filename, fileType);
 
             var item = ExecuteRequest(request);
-            return (int)item.StatusCode < 300;
+            return item.ToRockResponse();
         }
 
-        public virtual T Update(T entity, string id) {
+        public virtual IRockResponse<T> Update(T entity, string id) {
             if (string.IsNullOrWhiteSpace(EditUrl)) {
                 throw new NotImplementedException("The property EditUrl has no value on the ApiSet.");
             }
@@ -352,10 +346,10 @@ namespace Rock.Api {
             }
 
             var item = ExecuteRequest(request);
-            return item.Data;
+            return item.ToRockResponse<T>();
         }
 
-        public virtual T Update(T entity, string id, out string requestXml) {
+        public virtual IRockResponse<T> Update(T entity, string id, out string requestXml) {
             if (string.IsNullOrWhiteSpace(EditUrl)) {
                 throw new NotImplementedException("The property EditUrl has no value on the ApiSet.");
             }
@@ -370,16 +364,16 @@ namespace Rock.Api {
             }
 
             var item = ExecuteRequest(request);
-            return item.Data;
+            return item.ToRockResponse();
         }
 
-        public virtual bool Delete(string id) {
+        public virtual IRockResponse Delete(string id) {
             if (string.IsNullOrWhiteSpace(EditUrl)) {
                 throw new NotImplementedException("The property EditUrl has no value on the ApiSet.");
             }
             var request = CreateRestRequest(Method.DELETE, string.Format(EditUrl, id));
             var item = ExecuteRequest(request);
-            return (int)item.StatusCode < 300;
+            return item.ToRockResponse();
         }
 
         public byte[] GetByteArray(string url) {

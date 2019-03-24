@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.421
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rock.Api", "Rock.Api\Rock.Api.csproj", "{9BE2F0F5-7D8A-4BC9-A5F5-4B0447E0F5EF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rock.Api.Tests", "Rock.Api.Tests\Rock.Api.Tests.csproj", "{0F4068D5-05BF-48CD-AA13-E2E3C225C150}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{7670685E-696A-401B-BCD5-6204B63F1415}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,5 +26,11 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0F4068D5-05BF-48CD-AA13-E2E3C225C150} = {7670685E-696A-401B-BCD5-6204B63F1415}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C7E4259A-BD5B-4B01-AA30-04941F0B4823}
 	EndGlobalSection
 EndGlobal

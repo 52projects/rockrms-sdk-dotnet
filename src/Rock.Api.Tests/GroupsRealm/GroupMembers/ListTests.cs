@@ -12,7 +12,7 @@ namespace Rock.Api.Tests.GroupsRealm.GroupMembers {
         [Test]
         public void group_members_list_tests_get_all() {
             var results = this.RockClient.GroupRealm.GroupMembers.List();
-            results.Count().ShouldBeGreaterThan(0);
+            results.Data.Count().ShouldBeGreaterThan(0);
         }
     }
 }

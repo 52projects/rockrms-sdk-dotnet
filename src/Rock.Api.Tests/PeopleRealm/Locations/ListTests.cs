@@ -11,7 +11,7 @@ namespace Rock.Api.Tests.Locations {
         [Test]
         public void locations_list_tests_return_locations() {
             var results = this.RockClient.PeopleRealm.Locations.List();
-            results.Count().ShouldBeGreaterThan(0);
+            results.Data.Count().ShouldBeGreaterThan(0);
         }
     }
 }

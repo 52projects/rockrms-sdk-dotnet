@@ -12,13 +12,13 @@ namespace Rock.Api.Tests.GroupsRealm.GroupLocations {
         [Test]
         public void group_locations_list_tests_get_all() {
             var results = this.RockClient.GroupRealm.GroupLocations.List();
-            results.Count().ShouldBeGreaterThan(0);
+            results.Data.Count().ShouldBeGreaterThan(0);
         }
 
         [Test]
         public void group_locations_list_tests_get_by_group_id() {
             var results = this.RockClient.GroupRealm.GroupLocations.GetByGroupID(4197);
-            results.Items.Count().ShouldBeGreaterThan(0);
+            results.Data.Items.Count().ShouldBeGreaterThan(0);
         }
     }
 }

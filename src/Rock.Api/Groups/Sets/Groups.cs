@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Rock.Api.Groups.Model;
+using Rock.Api.Model;
 
 namespace Rock.Api.Groups.Sets {
     public class Groups : ApiSet<Model.Group> {
@@ -26,7 +27,7 @@ namespace Rock.Api.Groups.Sets {
             return null;
         }
 
-        public List<Group> GetFamilies(int personID) {
+        public IRockResponse<List<Group>> GetFamilies(int personID) {
             return base.ListBySuffixUrl<Group>("/api/Groups/GetFamilies/" + personID);
         }
     }

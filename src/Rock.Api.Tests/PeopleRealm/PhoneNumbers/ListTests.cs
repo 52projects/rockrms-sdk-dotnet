@@ -12,7 +12,7 @@ namespace Rock.Api.Tests.PhoneNumbers {
         [Test]
         public void phone_list_tests_return_phone_numbers() {
             var results = this.RockClient.PeopleRealm.PhoneNumbers.List();
-            results.Count().ShouldBeGreaterThan(0);
+            results.Data.Count().ShouldBeGreaterThan(0);
         }
     }
 }

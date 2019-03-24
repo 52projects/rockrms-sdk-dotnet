@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Rock.Api.Model;
 
 namespace Rock.Api.Exceptions {
     public class BaseException : ApplicationException {

@@ -19,7 +19,7 @@ namespace Rock.Api.Tests.People {
             };
             var outPutXml = string.Empty;
             var result = this.RockClient.PeopleRealm.People.Create(person, out outPutXml);
-            result.Id.ShouldNotBe(null);
+            result.Data.Id.ShouldNotBe(null);
         }
     }
 }
