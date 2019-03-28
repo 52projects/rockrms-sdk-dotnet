@@ -209,7 +209,7 @@ namespace Rock.Api {
             return response.ToRockResponse<T>();
         }
 
-        public virtual IRockResponse Create<S>(S entity, string url = "") where S : new() {
+        public virtual IRockResponse<int> Create<S>(S entity, string url = "") where S : new() {
             var targetUrl = string.Empty;
 
             if (!string.IsNullOrWhiteSpace(url)) {
@@ -240,11 +240,11 @@ namespace Rock.Api {
                 request.AddParameter("application/json", Newtonsoft.Json.JsonConvert.SerializeObject(entity), ParameterType.RequestBody);
             }
 
-            var item = ExecuteRequest(request);
+            var item = ExecuteCustomRequest<int>(request);
             return item.ToRockResponse();
         }
 
-        public virtual IRockResponse<T> Create(T entity, string url = "") {
+        public virtual IRockResponse<int> Create(T entity, string url = "") {
             var targetUrl = string.Empty;
 
             if (!string.IsNullOrWhiteSpace(url)) {
@@ -275,11 +275,11 @@ namespace Rock.Api {
                 request.AddParameter("application/json", Newtonsoft.Json.JsonConvert.SerializeObject(entity), ParameterType.RequestBody);
             }
 
-            var item = ExecuteRequest(request);
-            return item.ToRockResponse<T>();
+            var item = ExecuteCustomRequest<int>(request);
+            return item.ToRockResponse();
         }
 
-        public virtual IRockResponse<T> Create(T entity, out string requestXml, string url = "") {
+        public virtual IRockResponse<int> Create(T entity, out string requestXml, string url = "") {
             requestXml = entity.ToXml();
             var targetUrl = string.Empty;
 
@@ -307,7 +307,7 @@ namespace Rock.Api {
                 request.AddParameter("application/json", Newtonsoft.Json.JsonConvert.SerializeObject(entity), ParameterType.RequestBody);
             }
 
-            var item = ExecuteRequest(request);
+            var item = ExecuteCustomRequest<int>(request);
             return item.ToRockResponse();
         }
 
@@ -401,25 +401,13 @@ namespace Rock.Api {
             client.FollowRedirects = false;
             var response = client.Execute<T>(request);
 
-            if ((int)response.StatusCode >= 400) {
-                throw new ApiAccessException(response.Content) {
-                    StatusCode = response.StatusCode,
-                    StatusDescription = response.StatusDescription,
-                    RequestUrl = response.ResponseUri.AbsoluteUri
-                };
-            }
-
-            if ((int)response.StatusCode >= 300) {
+            if ((int)response.StatusCode >= 300 && (int)response.StatusCode < 400) {
                 var location = response.Headers.SingleOrDefault(x => x.Name == "Location");
 
                 if (location != null) {
                     request = CreateRestRequest(Method.GET, location.Value.ToString().Substring(_baseUrl.Length));
                     response = ExecuteRequest(request);
                 }
-            }
-
-            if (!string.IsNullOrEmpty(response.ErrorMessage)) {
-                throw new ApiAccessException(response.ErrorMessage);
             }
 
             return response;
@@ -445,14 +433,6 @@ namespace Rock.Api {
             var client = new RestSharp.RestClient(_baseUrl);
             client.FollowRedirects = false;
             var response = client.Execute<S>(request);
-
-            if ((int)response.StatusCode > 300) {
-                throw new ApiAccessException(response.ErrorException != null ? response.ErrorException.Message : "API Access Exception") {
-                    StatusCode = response.StatusCode,
-                    StatusDescription = response.StatusDescription,
-                    RequestUrl = response.ResponseUri.AbsoluteUri
-                };
-            }
 
             return response;
         }

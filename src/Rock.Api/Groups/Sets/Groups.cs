@@ -23,8 +23,8 @@ namespace Rock.Api.Groups.Sets {
 
         protected override string ListUrl { get { return LIST_URL; } }
 
-        public Group GetByFamilyID(int familyID) {
-            return null;
+        public IRockResponse<Group> GetByFamilyID(int familyID) {
+            return base.GetBySuffixUrl<Group>("/api/Groups/GetFamily/" + familyID);
         }
 
         public IRockResponse<List<Group>> GetFamilies(int personID) {

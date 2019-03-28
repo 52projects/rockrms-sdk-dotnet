@@ -15,11 +15,44 @@ namespace Rock.Api.Tests.People {
             var person = new Person {
                 FirstName = "Chad",
                 LastName = "Meyer",
-                Email = "chadmeyer@52projectsllc.com"
+                Email = "chadmeyer@52projectsllc.com",
+                Gender = Api.People.Enum.Gender.Male,
+                ConnectionStatusValueId = 65
             };
             var outPutXml = string.Empty;
             var result = this.RockClient.PeopleRealm.People.Create(person, out outPutXml);
-            result.Data.Id.ShouldNotBe(null);
+            result.Data.ShouldBeGreaterThan(0);
+        }
+
+        [Test]
+        public void create_test_create_family() {
+            var family = new Family {
+                Name = "Meyer Family",
+                HomeLocation = new Location {
+                    Street1 = "123 Test Rd",
+                    Street2 = "",
+                    State = "TX",
+                    City = "Georgetown",
+                    Country = "USA"
+                },
+                MainPhone = new PhoneNumber {
+                    Number = "1231231234",
+                    NumberTypeValueId = 1
+                }
+            };
+
+            family.FamilyMembers.Add(new FamilyMember {
+                Person = new Person {
+                    FirstName = "Chad",
+                    LastName = "Meyer",
+                    Email = "chadmeyer@52projectsllc.com",
+                    Gender = Api.People.Enum.Gender.Male,
+                    ConnectionStatusValueId = 65
+                }
+            });
+            
+            var result = this.RockClient.PeopleRealm.People.Create(family);
+            result.Data.ShouldBeGreaterThan(0);
         }
     }
 }

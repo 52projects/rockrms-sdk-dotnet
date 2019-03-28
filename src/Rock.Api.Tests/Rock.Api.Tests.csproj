@@ -61,10 +61,14 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="FinancialRealm\Accounts\ListTests.cs" />
+    <Compile Include="FinancialRealm\Pledges\ListTests.cs" />
+    <Compile Include="GeneralRealm\DefinedValues\ListTests.cs" />
     <Compile Include="GroupsRealm\GroupLocations\ListTests.cs" />
     <Compile Include="GroupsRealm\GroupMembers\ListTests.cs" />
     <Compile Include="GroupsRealm\Groups\GetTests.cs" />
     <Compile Include="GroupsRealm\Groups\ListTests.cs" />
+    <Compile Include="PeopleRealm\ConnectionStatuses\ListTests.cs" />
     <Compile Include="PeopleRealm\Locations\ListTests.cs" />
     <Compile Include="PeopleRealm\People\CreateTests.cs" />
     <Compile Include="PeopleRealm\People\GetTests.cs" />
@@ -84,6 +88,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

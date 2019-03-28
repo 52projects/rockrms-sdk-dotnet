@@ -57,12 +57,23 @@
     <Compile Include="Exceptions\PropertyNotAllowedException.cs" />
     <Compile Include="Extensions\RestSharpExtensions.cs" />
     <Compile Include="Extensions\StringExtension.cs" />
+    <Compile Include="Financial\Model\Account.cs" />
+    <Compile Include="Financial\Model\Pledge.cs" />
+    <Compile Include="Financial\Sets\Accounts.cs" />
+    <Compile Include="Financial\Sets\Pledges.cs" />
+    <Compile Include="General\Enum\SystemDefinedType.cs" />
+    <Compile Include="General\Model\DefinedValue.cs" />
+    <Compile Include="General\QueryObject\DefinedTypeQO.cs" />
+    <Compile Include="General\QueryObject\DefinedValueQO.cs" />
+    <Compile Include="General\Sets\DefinedValues.cs" />
     <Compile Include="Groups\Model\GroupLocation.cs" />
+    <Compile Include="Groups\Model\GroupType.cs" />
     <Compile Include="Groups\QueryObject\GroupLocationQO.cs" />
     <Compile Include="Groups\Sets\GroupLocations.cs" />
     <Compile Include="Groups\Sets\GroupMembers.cs" />
     <Compile Include="Model\ApiModel.cs" />
     <Compile Include="Model\BaseModel.cs" />
+    <Compile Include="General\Model\DefinedType.cs" />
     <Compile Include="Model\RockCollection.cs" />
     <Compile Include="Model\ParentObject.cs" />
     <Compile Include="Model\RockResponse.cs" />
@@ -72,6 +83,9 @@
     <Compile Include="People\Enum\Gender.cs" />
     <Compile Include="Groups\Model\Group.cs" />
     <Compile Include="Groups\Model\GroupMember.cs" />
+    <Compile Include="People\Model\ConnectionStatus.cs" />
+    <Compile Include="People\Model\Family.cs" />
+    <Compile Include="People\Model\FamilyMember.cs" />
     <Compile Include="People\Model\Location.cs" />
     <Compile Include="People\Model\Person.cs" />
     <Compile Include="People\Model\PhoneNumber.cs" />
@@ -79,16 +93,22 @@
     <Compile Include="People\QueryObject\PersonQO.cs" />
     <Compile Include="People\QueryObject\PhoneNumberQO.cs" />
     <Compile Include="Groups\Sets\Groups.cs" />
+    <Compile Include="People\Sets\ConnectionStatuses.cs" />
+    <Compile Include="People\Sets\Families.cs" />
     <Compile Include="People\Sets\Locations.cs" />
     <Compile Include="People\Sets\People.cs" />
     <Compile Include="People\Sets\PhoneNumbers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Realms\Financial.cs" />
+    <Compile Include="Realms\General.cs" />
     <Compile Include="Realms\Group.cs" />
     <Compile Include="Realms\Person.cs" />
     <Compile Include="RockClient.cs" />
     <Compile Include="Sets\ApiSet.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Financial\QueryObject\" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>

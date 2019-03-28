@@ -24,7 +24,7 @@ namespace Rock.Api.Tests.PhoneNumbers {
 
             var outPutXml = string.Empty;
             var result = this.RockClient.PeopleRealm.PhoneNumbers.Create(phone, out outPutXml);
-            result.Data.Id.ShouldNotBe(null);
+            result.Data.ShouldBeGreaterThan(0);
         }
     }
 }

@@ -13,6 +13,8 @@ namespace Rock.Api {
 
         public Rock.Api.Realms.Person PeopleRealm;
         public Rock.Api.Realms.Group GroupRealm;
+        public Realms.Financial FinancialRealm;
+        public Realms.General GeneralRealm;
         #endregion declarations
 
         /// <summary>
@@ -26,6 +28,8 @@ namespace Rock.Api {
 
             this.PeopleRealm = new Realms.Person(domainUrl, apiToken);
             this.GroupRealm = new Realms.Group(domainUrl, apiToken);
+            FinancialRealm = new Realms.Financial(domainUrl, apiToken);
+            GeneralRealm = new Realms.General(domainUrl, apiToken);
         }
     }
 }

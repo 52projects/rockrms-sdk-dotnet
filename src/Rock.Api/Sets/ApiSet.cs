@@ -83,6 +83,23 @@ namespace Rock.Api {
             return item.ToRockCollectionResponse();
         }
 
+        public virtual IRockResponse<RockCollection<S>> FindBy<S>(BaseQO qo) where S : new() {
+            var collection = new RockCollection<S>();
+
+            if (string.IsNullOrWhiteSpace(SearchUrl)) {
+                throw new NotImplementedException("The property SearchUrl has no value on the ApiSet.");
+            }
+
+            var request = CreateRestRequest(Method.GET, SearchUrl);
+
+            foreach (var pair in qo.ToDictionary()) {
+                request.AddParameter(pair.Key, pair.Value);
+            }
+
+            var item = ExecuteCustomRequest<List<S>>(request);
+            return item.ToRockCollectionResponse();
+        }
+
         public virtual IRockResponse<RockCollection<T>> FindBy(string parentID, BaseQO qo) {
             var collection = new RockCollection<T>();
 

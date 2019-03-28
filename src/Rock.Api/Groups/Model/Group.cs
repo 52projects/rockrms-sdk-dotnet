@@ -11,5 +11,6 @@ using Newtonsoft.Json;
 
 namespace Rock.Api.Groups.Model {
     public class Group : ApiModel {
+
     }
 }

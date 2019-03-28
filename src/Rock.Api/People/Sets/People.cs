@@ -54,9 +54,13 @@ namespace Rock.Api.People.Sets {
             return response;
         }
 
-        private IRockResponse<RockCollection<Person>> FindAll(PersonQO qo) {
+        public IRockResponse<RockCollection<Person>> FindAll(PersonQO qo) {
             var response = base.FindBy(qo);
             return response;
+        }
+
+        public IRockResponse<Family> GetFamily(int familyID) {
+            return base.GetBySuffixUrl<Family>(string.Format("/api/groups/getfamily/{0}", familyID));
         }
     }
 }

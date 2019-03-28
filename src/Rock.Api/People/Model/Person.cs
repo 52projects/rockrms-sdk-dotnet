@@ -18,17 +18,29 @@ namespace Rock.Api.People.Model {
         }
 
         public bool IsSystem { get; set; }
+
         public int? RecordTypeValueId { get; set; }
+
         public int? RecordStatusValueId { get; set; }
+
         public DateTime? RecordStatusLastModifiedDateTime { get; set; }
+
         public int? RecordStatusReasonValueId { get; set; }
+
         public int? ConnectionStatusValueId { get; set; }
+
         public int? ReviewReasonValueId { get; set; }
+
         public bool IsDeceased { get; set; }
+
         public int? TitleValueId { get; set; }
+
         public string FirstName { get; set; }
+
         public string NickName { get; set; }
+
         public string MiddleName { get; set; }
+
         public string LastName { get; set; }
         public int? SuffixValueId { get; set; }
         public int? PhotoId { get; set; }

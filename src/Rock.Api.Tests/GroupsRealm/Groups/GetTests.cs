@@ -10,8 +10,11 @@ namespace Rock.Api.Tests.GroupsRealm.GroupMembers {
     [TestFixture]
     public class GetTests : Base {
         [Test]
-        public void group_get_tests_get_by_grou_id() {
-            var results = this.RockClient.GroupRealm.Groups.Get("2");
+        public void group_get_family_by_family_id() {
+            var results = this.RockClient.PeopleRealm.People.FindByEmail("ted@rocksolidchurchdemo.com");
+            var person = results.Data.Items[0];
+
+            var familyResults = RockClient.GroupRealm.Groups.GetByFamilyID(person.PrimaryFamilyId.Value);
             results.ShouldNotBe(null);
         }
     }
