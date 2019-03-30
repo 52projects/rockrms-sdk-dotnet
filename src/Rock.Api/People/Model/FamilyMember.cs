@@ -8,7 +8,7 @@ using Rock.Api.Model;
 
 namespace Rock.Api.People.Model {
     public class FamilyMember : GroupMember {
-        public GroupType GroupRole { get; set; }
+        public GroupRole GroupRole { get; set; }
 
         public Person Person { get; set; }
 

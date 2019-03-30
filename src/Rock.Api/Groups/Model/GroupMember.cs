@@ -7,6 +7,8 @@ using Rock.Api.Model;
 
 namespace Rock.Api.Groups.Model {
     public class GroupMember : ApiModel {
+        public bool IsSystem { get; set; }
+
         public int GroupId { get; set; }
 
         public int PersonId { get; set; }

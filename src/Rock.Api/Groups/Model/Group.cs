@@ -11,6 +11,31 @@ using Newtonsoft.Json;
 
 namespace Rock.Api.Groups.Model {
     public class Group : ApiModel {
+        public bool IsSystem { get; set; }
+        public int? ParentGroupId { get; set; }
 
+        public int GroupTypeId { get; set; }
+
+        public int? CampusId { get; set; }
+
+        public int? ScheduleId { get; set; }
+
+        public string Name { get; set; }
+
+        public string Description { get; set; }
+
+        public bool IsSecurityRole { get; set; }
+
+        public bool IsActive { get; set; }
+
+        public int Order { get; set; }
+
+        public bool? AllowGuests { get; set; }
+
+        public bool IsPublic { get; set; }
+
+        public int? GroupCapacity { get; set; }
+
+        public int? RequiredSignatureDocumentTemplateId { get; set; }
     }
 }

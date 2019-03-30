@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Rock.Api.Model;
 
 namespace Rock.Api.Groups.Model {
-    public class GroupType : ApiModel {
+    public class GroupRole : ApiModel {
         public bool IsSystem { get; set; }
 
         public int GroupTypeId { get; set; }

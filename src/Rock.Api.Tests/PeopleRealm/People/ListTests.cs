@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using NUnit.Framework;
 using Shouldly;
 
-namespace Rock.Api.Tests.People {
+namespace Rock.Api.Tests.PeopleRealm.People {
     [TestFixture]
     public class ListTests : Base {
         [Test]

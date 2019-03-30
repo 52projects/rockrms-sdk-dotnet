@@ -93,7 +93,6 @@
     <Compile Include="People\QueryObject\PersonQO.cs" />
     <Compile Include="People\QueryObject\PhoneNumberQO.cs" />
     <Compile Include="Groups\Sets\Groups.cs" />
-    <Compile Include="People\Sets\ConnectionStatuses.cs" />
     <Compile Include="People\Sets\Families.cs" />
     <Compile Include="People\Sets\Locations.cs" />
     <Compile Include="People\Sets\People.cs" />
@@ -104,6 +103,8 @@
     <Compile Include="Realms\Group.cs" />
     <Compile Include="Realms\Person.cs" />
     <Compile Include="RockClient.cs" />
+    <Compile Include="Services\BaseService.cs" />
+    <Compile Include="Services\FamilyService.cs" />
     <Compile Include="Sets\ApiSet.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -7,12 +7,12 @@ using Rock.Api.Groups.Model;
 using Rock.Api.Model;
 
 namespace Rock.Api.Groups.Sets {
-    public class Groups : ApiSet<Model.Group> {
-        private const string LIST_URL = "api/Locations/";
-        private const string GET_URL = "/api/GroupLocations/{0}";
-        private const string SEARCH_URL = "/api/locations/";
-        private const string CREATE_URL = "/api/locations";
-        private const string EDIT_URL = "/api/locations/{0}";
+    public class Groups : ApiSet<Group> {
+        private const string LIST_URL = "api/groups/";
+        private const string GET_URL = "/api/groups/{0}";
+        private const string SEARCH_URL = "/api/groups/";
+        private const string CREATE_URL = "/api/groups";
+        private const string EDIT_URL = "/api/groups/{0}";
 
         public Groups(string baseUrl, string apiToken) : base(baseUrl, apiToken, ContentType.JSON) { }
 
@@ -22,13 +22,5 @@ namespace Rock.Api.Groups.Sets {
         protected override string EditUrl { get { return EDIT_URL; } }
 
         protected override string ListUrl { get { return LIST_URL; } }
-
-        public IRockResponse<Group> GetByFamilyID(int familyID) {
-            return base.GetBySuffixUrl<Group>("/api/Groups/GetFamily/" + familyID);
-        }
-
-        public IRockResponse<List<Group>> GetFamilies(int personID) {
-            return base.ListBySuffixUrl<Group>("/api/Groups/GetFamilies/" + personID);
-        }
     }
 }

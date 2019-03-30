@@ -68,7 +68,7 @@
     <Compile Include="GroupsRealm\GroupMembers\ListTests.cs" />
     <Compile Include="GroupsRealm\Groups\GetTests.cs" />
     <Compile Include="GroupsRealm\Groups\ListTests.cs" />
-    <Compile Include="PeopleRealm\ConnectionStatuses\ListTests.cs" />
+    <Compile Include="PeopleRealm\Families\GetTests.cs" />
     <Compile Include="PeopleRealm\Locations\ListTests.cs" />
     <Compile Include="PeopleRealm\People\CreateTests.cs" />
     <Compile Include="PeopleRealm\People\GetTests.cs" />
@@ -78,6 +78,7 @@
     <Compile Include="PeopleRealm\PhoneNumbers\CreateTests.cs" />
     <Compile Include="PeopleRealm\PhoneNumbers\ListTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\FamilyServiceTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Rock.Api\Rock.Api.csproj">

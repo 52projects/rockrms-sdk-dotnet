@@ -18,6 +18,5 @@ namespace Rock.Api.People.Model {
         public Location HomeLocation { get; set; }
 
         public PhoneNumber MainPhone { get; set; }
-
     }
 }

@@ -10,9 +10,9 @@ namespace Rock.Api.Realms {
         private string _domainUrl;
         private string _apiToken;
         private Rock.Api.People.Sets.People _peopleSet;
+        private Rock.Api.People.Sets.Families _familiesSet;
         private Rock.Api.People.Sets.PhoneNumbers _phoneNumbersSet;
         private Rock.Api.People.Sets.Locations _locationSet;
-        private Rock.Api.People.Sets.ConnectionStatuses _connectionStatusSet;
         #endregion declarations
 
         #region Constructor
@@ -51,13 +51,13 @@ namespace Rock.Api.Realms {
             }
         }
 
-        public Rock.Api.People.Sets.ConnectionStatuses ConnectionStatuses {
+        public Rock.Api.People.Sets.Families Families {
             get {
-                if (_connectionStatusSet == null) {
-                    _connectionStatusSet = new People.Sets.ConnectionStatuses(_domainUrl, _apiToken);
+                if (_familiesSet == null) {
+                    _familiesSet = new People.Sets.Families(_domainUrl, _apiToken);
                 }
 
-                return _connectionStatusSet;
+                return _familiesSet;
             }
         }
         #endregion Sets

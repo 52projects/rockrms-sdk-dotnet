@@ -9,7 +9,7 @@ using Rock.Api.Model;
 
 namespace Rock.Api.People.Sets {
     public class People : ApiSet<Model.Person> {
-        private const string LIST_URL = "api/People/";
+        private const string LIST_URL = "api/people/";
         private const string GET_URL = "/api/people/{0}";
         private const string SEARCH_URL = "/api/people/";
         private const string CREATE_URL = "/api/people";

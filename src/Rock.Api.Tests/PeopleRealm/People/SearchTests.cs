@@ -8,7 +8,7 @@ using Shouldly;
 using Rock.Api.People.QueryObject;
 using Rock.Api.People.Model;
 
-namespace Rock.Api.Tests.People {
+namespace Rock.Api.Tests.PeopleRealm.People {
     [TestFixture]
     public class SearchTests : Base {
         [Test]

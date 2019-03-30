@@ -10,14 +10,8 @@ namespace Rock.Api.Tests.Groups {
     [TestFixture]
     public class ListTests : Base {
         [Test]
-        public void groups_list_tests_get_by_family_id() {
+        public void grouos_list_get_all() {
             var results = this.RockClient.GroupRealm.Groups.List();
-            results.Data.Count().ShouldBeGreaterThan(0);
-        }
-
-        [Test]
-        public void groups_list_get_families_by_person() {
-            var results = this.RockClient.GroupRealm.Groups.GetFamilies(122);
             results.Data.Count().ShouldBeGreaterThan(0);
         }
     }

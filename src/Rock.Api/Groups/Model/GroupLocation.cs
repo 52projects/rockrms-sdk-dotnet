@@ -12,5 +12,14 @@ using Newtonsoft.Json;
 
 namespace Rock.Api.Groups.Model {
     public class GroupLocation : ApiModel {
+        public int GroupId { get; set; }
+
+        public int LocationId { get; set; }
+
+        public int? GroupLocationTypeValueId { get; set; }
+
+        public bool IsMailingLocation { get; set; }
+
+        public bool IsMappedLocation { get; set; }
     }
 }
