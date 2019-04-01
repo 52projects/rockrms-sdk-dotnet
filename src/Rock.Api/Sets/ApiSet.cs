@@ -67,30 +67,20 @@ namespace Rock.Api {
         }
 
         public virtual IRockResponse<RockCollection<T>> FindBy(BaseQO qo) {
-            var collection = new RockCollection<T>();
-
-            if (string.IsNullOrWhiteSpace(SearchUrl)) {
-                throw new NotImplementedException("The property SearchUrl has no value on the ApiSet.");
-            }
-
-            var request = CreateRestRequest(Method.GET, SearchUrl);
-
-            foreach (var pair in qo.ToDictionary()) {
-                request.AddParameter(pair.Key, pair.Value);
-            }
-
-            var item = ExecuteListRequest(request);
-            return item.ToRockCollectionResponse();
+            return FindBy<T>(qo);
         }
 
-        public virtual IRockResponse<RockCollection<S>> FindBy<S>(BaseQO qo) where S : new() {
+        public virtual IRockResponse<RockCollection<S>> FindBy<S>(BaseQO qo, string url = null) where S : new() {
             var collection = new RockCollection<S>();
 
-            if (string.IsNullOrWhiteSpace(SearchUrl)) {
-                throw new NotImplementedException("The property SearchUrl has no value on the ApiSet.");
+            if (string.IsNullOrEmpty(url)) {
+                if (string.IsNullOrWhiteSpace(SearchUrl)) {
+                    throw new NotImplementedException("The property SearchUrl has no value on the ApiSet.");
+                }
+                url = SearchUrl;
             }
 
-            var request = CreateRestRequest(Method.GET, SearchUrl);
+            var request = CreateRestRequest(Method.GET, url);
 
             foreach (var pair in qo.ToDictionary()) {
                 request.AddParameter(pair.Key, pair.Value);
@@ -101,20 +91,7 @@ namespace Rock.Api {
         }
 
         public virtual IRockResponse<RockCollection<T>> FindBy(string parentID, BaseQO qo) {
-            var collection = new RockCollection<T>();
-
-            if (string.IsNullOrWhiteSpace(SearchUrl)) {
-                throw new NotImplementedException("The property SearchUrl has no value on the ApiSet.");
-            }
-
-            var request = CreateRestRequest(Method.GET, string.Format(SearchUrl, parentID));
-
-            foreach (var pair in qo.ToDictionary()) {
-                request.AddParameter(pair.Key, pair.Value);
-            }
-
-            var item = ExecuteListRequest(request);
-            return item.ToRockCollectionResponse();
+            return FindBy<T>(qo, string.Format(SearchUrl, parentID));
         }
     }
 }

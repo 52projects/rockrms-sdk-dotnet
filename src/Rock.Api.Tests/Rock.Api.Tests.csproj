@@ -61,8 +61,13 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="FinancialRealm\Accounts\CreateTests.cs" />
     <Compile Include="FinancialRealm\Accounts\ListTests.cs" />
     <Compile Include="FinancialRealm\Pledges\ListTests.cs" />
+    <Compile Include="FinancialRealm\Transactions\CreateTests.cs" />
+    <Compile Include="FinancialRealm\Transactions\GetTests.cs" />
+    <Compile Include="FinancialRealm\Transactions\ListTests.cs" />
+    <Compile Include="GeneralRealm\DefinedValues\CreateTests.cs" />
     <Compile Include="GeneralRealm\DefinedValues\ListTests.cs" />
     <Compile Include="GroupsRealm\GroupLocations\ListTests.cs" />
     <Compile Include="GroupsRealm\GroupMembers\ListTests.cs" />

@@ -12,6 +12,7 @@ namespace Rock.Api.Realms {
         private string _apiToken;
         private Accounts _accountsSet;
         private Pledges _pledgesSet;
+        private Transactions _transactionsSet;
         #endregion declarations
 
         #region Constructor
@@ -36,6 +37,15 @@ namespace Rock.Api.Realms {
                     _pledgesSet = new Pledges(this._domainUrl, this._apiToken);
                 }
                 return _pledgesSet;
+            }
+        }
+
+        public Transactions Transactions {
+            get {
+                if (_transactionsSet == null) {
+                    _transactionsSet = new Transactions(_domainUrl, _apiToken);
+                }
+                return _transactionsSet;
             }
         }
     }
