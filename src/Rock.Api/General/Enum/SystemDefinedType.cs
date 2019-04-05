@@ -24,6 +24,7 @@ namespace Rock.Api.General.Enum {
         DeviceType = 21,
         RecurringTransactionFrequency = 23,
         AddressState = 28,
-        AbilityLevel = 30
+        AbilityLevel = 30,
+        TransactionType = 25
     }
 }

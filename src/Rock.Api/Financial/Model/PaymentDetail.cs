@@ -3,9 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Rock.Api.Model;
 
 namespace Rock.Api.Financial.Model {
-    public class PaymentDetail {
+    public class PaymentDetail : ApiModel {
+        public PaymentDetail() {
+            CurrencyTypeValueId = 9;
+        }
+
         public string AccountNumberMasked { get; set; }
 
         public int CurrencyTypeValueId { get; set; }

@@ -11,11 +11,13 @@ namespace Rock.Api.Tests {
         private const string _domainUrl = "http://rock.rocksolidchurchdemo.com";
         internal RockClient RockClient;
         internal IFamilyService FamilyService;
+        internal ITransactionService TransactionService;
 
         [OneTimeSetUp]
         public void Setup() {
             this.RockClient = new RockClient(_domainUrl, _apiToken);
             FamilyService = new FamilyService(_domainUrl, _apiToken);
+            TransactionService = new TransactionService(_domainUrl, _apiToken);
         }
     }
 }
