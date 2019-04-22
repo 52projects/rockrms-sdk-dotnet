@@ -10,7 +10,8 @@ namespace Rock.Api.Realms {
         #region declarations
         private string _domainUrl;
         private string _apiToken;
-        private Rock.Api.General.Sets.DefinedValues _definedValuesSet;
+        private DefinedValues _definedValuesSet;
+        private AttributeValues _attributeValuesSet;
         #endregion declarations
 
         #region Constructor
@@ -28,6 +29,15 @@ namespace Rock.Api.Realms {
                     _definedValuesSet = new DefinedValues(this._domainUrl, this._apiToken);
                 }
                 return _definedValuesSet;
+            }
+        }
+
+        public AttributeValues AttributeValues {
+            get {
+                if (_attributeValuesSet == null) {
+                    _attributeValuesSet = new AttributeValues(_domainUrl, _apiToken);
+                }
+                return _attributeValuesSet;
             }
         }
 

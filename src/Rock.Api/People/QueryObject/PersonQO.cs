@@ -6,9 +6,14 @@ namespace Rock.Api.People.QueryObject {
     public class PersonQO : BaseQO {
         public PersonQO() {
             this.ExpandEntities.Add("PhoneNumbers");
+            PersonIDs = new List<int>();
         }
         [QOIgnore()]
         public int? ID { get; set; }
+
+        [QOIgnore()]
+        public List<int> PersonIDs { get; set; }
+
         /// <summary>
         /// The name search parameter will be parsed by space and by comma
         /// If a space is found first, search assumes FirstName and then Last Name
@@ -18,6 +23,9 @@ namespace Rock.Api.People.QueryObject {
         /// </summary>
         [QOIgnore()]
         public string Name { get; set; }
+
+        [QOIgnore()]
+        public string MiddleName { get; set; }
 
         [QOIgnore()]
         public string Email { get; set; }
@@ -34,6 +42,9 @@ namespace Rock.Api.People.QueryObject {
                 }
                 if (!string.IsNullOrEmpty(this.Email)) {
                     filterList.Add("Email eq '" + this.Email + "'");
+                }
+                if (!string.IsNullOrEmpty(MiddleName)) {
+                    filterList.Add("startswith(MiddleName, '" + this.MiddleName + "')");
                 }
                 if (!string.IsNullOrEmpty(this.Name)) {
                     var commaIndex = this.Name.IndexOf(',');
@@ -59,6 +70,9 @@ namespace Rock.Api.People.QueryObject {
                             }
                         }
                     }
+                }
+                if (PersonIDs.Count > 0) {
+                    filterList.Add(string.Format("Id in ({0})", string.Join(",", PersonIDs)));
                 }
 
                 return string.Join(" and ", filterList);
