@@ -17,6 +17,7 @@ namespace Rock.Api.Groups.Model {
         }
 
         public bool IsSystem { get; set; }
+
         public int? ParentGroupId { get; set; }
 
         public int GroupTypeId { get; set; }

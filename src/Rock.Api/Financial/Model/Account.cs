@@ -1,5 +1,6 @@
 ﻿using Rock.Api.Model;
 using System;
+using Newtonsoft.Json;
 
 namespace Rock.Api.Financial.Model {
     public class Account : ApiModel {
@@ -40,5 +41,8 @@ namespace Rock.Api.Financial.Model {
         public DateTime? CreatedDateTime { get; set; }
 
         public DateTime? ModifiedDateTime { get; set; }
+
+        [JsonIgnore]
+        public string Guid { get; set; }
     }
 }
