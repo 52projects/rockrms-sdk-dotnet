@@ -9,7 +9,6 @@ using System.Xml.Serialization;
 using Rock.Api.People.Enum;
 using Newtonsoft.Json;
 
-
 namespace Rock.Api.People.Model {
     public class Location : ApiModel {
         public string LocationTypeValue { get; set; }

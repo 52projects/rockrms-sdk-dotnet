@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Rock.Api.Model;
-
-using RestSharp;
-using Rock.Api.Model;
+﻿using RestSharp;
 using Rock.Api.Extensions;
-
+using Rock.Api.Model;
+using System;
+using System.Collections.Generic;
 
 namespace Rock.Api {
     public abstract class ApiSet<T> : BaseApiSet<T> where T : new() {

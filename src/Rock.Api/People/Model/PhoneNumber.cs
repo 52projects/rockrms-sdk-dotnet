@@ -8,6 +8,7 @@ using System.Xml;
 using System.Xml.Serialization;
 using Rock.Api.People.Enum;
 using Newtonsoft.Json;
+
 namespace Rock.Api.People.Model {
     public class PhoneNumber : ApiModel {
         public bool IsSystem { get; set; }

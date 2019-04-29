@@ -14,7 +14,6 @@ using Rock.Api.Model;
 namespace Rock.Api {
     public abstract class BaseApiSet<T> where T : new() {
         #region Properties
-        private readonly string _apiToken;
         private readonly string _baseUrl;
         private readonly ContentType _contentType;
         private readonly IDictionary<string, string> _requestHeaders;
