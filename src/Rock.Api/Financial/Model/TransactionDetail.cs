@@ -20,5 +20,7 @@ namespace Rock.Api.Financial.Model {
         public int? EntityTypeId { get; set; }
 
         public int? EntityId { get; set; }
+
+        public int? ForeignId { get; set; }
     }
 }

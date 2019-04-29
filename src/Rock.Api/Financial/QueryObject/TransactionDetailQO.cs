@@ -10,6 +10,12 @@ namespace Rock.Api.Financial.QueryObject {
         [QOIgnore()]
         public int? TransactionId { get; set; }
 
+        [QOIgnore()]
+        public int? EntityTypeId { get; set; }
+
+        [QOIgnore()]
+        public int? EntityId { get; set; }
+
         /// <summary>
         /// After the search options have been created, a filter is created to send to Rock
         /// </summary>
@@ -19,6 +25,12 @@ namespace Rock.Api.Financial.QueryObject {
                 var filterList = new List<string>();
                 if (this.TransactionId.HasValue) {
                     filterList.Add("TransactionId eq " + TransactionId.Value);
+                }
+                if (EntityTypeId.HasValue) {
+                    filterList.Add("EntityTypeId eq " + EntityTypeId.Value);
+                }
+                if (EntityId.HasValue) {
+                    filterList.Add("EntityId eq " + EntityId.Value);
                 }
 
                 return string.Join(" and ", filterList);

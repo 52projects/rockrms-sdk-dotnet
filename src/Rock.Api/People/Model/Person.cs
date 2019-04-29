@@ -75,9 +75,15 @@ namespace Rock.Api.People.Model {
         public AgeClassification AgeClassification { get; set; }
 
         public bool IsLockedAsChild { get; set; }
+
         public int? PrimaryFamilyId { get; set; }
+
         public DateTime? DeceasedDate { get; set; }
+
+        public int? PrimaryAliasId { get; set; }
+
         public List<string> Users { get; set; }
+
         public List<PhoneNumber> PhoneNumbers { get; set; }
 
         [XmlIgnore]

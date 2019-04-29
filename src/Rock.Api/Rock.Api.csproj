@@ -57,6 +57,7 @@
     <Compile Include="Exceptions\PropertyNotAllowedException.cs" />
     <Compile Include="Extensions\RestSharpExtensions.cs" />
     <Compile Include="Extensions\StringExtension.cs" />
+    <Compile Include="Financial\Enum\TransactionType.cs" />
     <Compile Include="Financial\Model\Account.cs" />
     <Compile Include="Financial\Model\PaymentDetail.cs" />
     <Compile Include="Financial\Model\Pledge.cs" />
@@ -66,6 +67,7 @@
     <Compile Include="Financial\Sets\Accounts.cs" />
     <Compile Include="Financial\Sets\Pledges.cs" />
     <Compile Include="Financial\Sets\Transactions.cs" />
+    <Compile Include="General\Enum\EntityType.cs" />
     <Compile Include="General\Enum\SystemAttribute.cs" />
     <Compile Include="General\Enum\SystemDefinedType.cs" />
     <Compile Include="General\Model\Attribute.cs" />

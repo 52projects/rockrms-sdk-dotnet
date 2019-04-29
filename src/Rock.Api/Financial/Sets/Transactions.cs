@@ -36,9 +36,9 @@ namespace Rock.Api.Financial.Sets {
                 transactionResult.Data.TransactionDetails = detailsResult.Data.Items;
             }
 
-            var paymentDetailResult = FindDetails(transactionResult.Data.Id.Value);
-            if (detailsResult.IsSuccessful) {
-                transactionResult.Data.TransactionDetails = detailsResult.Data.Items;
+            var paymentDetailResult = GetPaymentDetail(transactionResult.Data.FinancialPaymentDetailId.Value);
+            if (paymentDetailResult.IsSuccessful) {
+                transactionResult.Data.FinancialPaymentDetail = paymentDetailResult.Data;
             }
 
             return transactionResult;
@@ -46,6 +46,10 @@ namespace Rock.Api.Financial.Sets {
 
         public IRockResponse<RockCollection<TransactionDetail>> FindDetails(int transactionId) {
             return FindBy<TransactionDetail>(new TransactionDetailQO { TransactionId = transactionId }, "api/financialtransactiondetails");
+        }
+
+        public IRockResponse<PaymentDetail> GetPaymentDetail(int paymentDetailId) {
+            return GetBySuffixUrl<PaymentDetail>("api/financialpaymentdetails/" + paymentDetailId);
         }
 
         public IRockResponse<int> CreatePaymentDetails(PaymentDetail paymentDetail) {

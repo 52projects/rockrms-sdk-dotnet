@@ -15,6 +15,8 @@ namespace Rock.Api.Tests.FinancialRealm.Transactions {
             var results = this.RockClient.FinancialRealm.Transactions.List();
 
             var transactionResults = RockClient.FinancialRealm.Transactions.Get(results.Data[0].Id.ToString());
+            var transactionDetails = RockClient.FinancialRealm.Transactions.FindDetails(transactionResults.Data.Id.Value);
+
             transactionResults.Data.TransactionDetails.Count.ShouldBeGreaterThan(0);
         }
     }
