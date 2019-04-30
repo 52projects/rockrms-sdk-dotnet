@@ -8,6 +8,7 @@ using System.Xml;
 using System.Xml.Serialization;
 using Rock.Api.People.Enum;
 using Newtonsoft.Json;
+using Rock.Api.General.Model;
 
 namespace Rock.Api.People.Model {
     public class Person : ApiModel {
@@ -15,6 +16,7 @@ namespace Rock.Api.People.Model {
             this.EmailPreference = EmailPreference.EmailAllowed;
             this.Gender = Gender.Unknown;
             this.PhoneNumbers = new List<PhoneNumber>();
+            AttributeValues = new List<AttributeValue>();
         }
 
         public bool IsSystem { get; set; }
@@ -85,6 +87,9 @@ namespace Rock.Api.People.Model {
         public List<string> Users { get; set; }
 
         public List<PhoneNumber> PhoneNumbers { get; set; }
+
+        [JsonIgnore]
+        public List<AttributeValue> AttributeValues { get; set; }
 
         [XmlIgnore]
         [JsonIgnore]

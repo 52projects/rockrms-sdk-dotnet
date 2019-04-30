@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Rock.Api.General.Enum {
     public enum EntityType {
-        GroupMember = 90
+        GroupMember = 90,
+        Person = 15,
     }
 }

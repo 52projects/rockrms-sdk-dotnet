@@ -7,7 +7,7 @@ namespace Rock.Api.Tests {
     [TestFixture]
     public class Base {
         private const string _apiToken = "Kd8LicOdwqGkqyO1prcERm8c";
-        private const string _domainUrl = "http://rock.rocksolidchurchdemo.com";
+        private const string _domainUrl = "https://rock.dev.focusmissions.com";
         internal RockClient RockClient;
 
         [OneTimeSetUp]

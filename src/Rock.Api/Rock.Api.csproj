@@ -35,7 +35,6 @@
     </Reference>
     <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\RestSharp.105.2.3\lib\net46\RestSharp.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -76,6 +75,8 @@
     <Compile Include="General\QueryObject\AttributeValueQO.cs" />
     <Compile Include="General\QueryObject\DefinedTypeQO.cs" />
     <Compile Include="General\QueryObject\DefinedValueQO.cs" />
+    <Compile Include="General\QueryObject\AttributeQO.cs" />
+    <Compile Include="General\Sets\Attributes.cs" />
     <Compile Include="General\Sets\AttributeValues.cs" />
     <Compile Include="General\Sets\DefinedValues.cs" />
     <Compile Include="Groups\Enum\GroupRole.cs" />

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Rock.Api.People.Sets;
+using System.Net;
 
 namespace Rock.Api {
     public class RockClient {
@@ -23,6 +24,7 @@ namespace Rock.Api {
         /// <param name="domainUrl">The root domain of where rock is installed. ex: rock.rocksolidchurchdemo.com</param>
         /// <param name="apiToken">the API token that was created from Rock</param>
         public RockClient(string domainUrl, string apiToken) {
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
             this._domainUrl = domainUrl;
             this._apiToken = apiToken;
 

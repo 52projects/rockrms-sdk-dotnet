@@ -66,6 +66,7 @@
     <Compile Include="FinancialRealm\Pledges\ListTests.cs" />
     <Compile Include="FinancialRealm\Transactions\GetTests.cs" />
     <Compile Include="FinancialRealm\Transactions\ListTests.cs" />
+    <Compile Include="GeneralRealm\Attributes\SearchTests.cs" />
     <Compile Include="GeneralRealm\AttributeValues\SearchTests.cs" />
     <Compile Include="GeneralRealm\DefinedValues\CreateTests.cs" />
     <Compile Include="GeneralRealm\DefinedValues\ListTests.cs" />

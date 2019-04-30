@@ -11,7 +11,7 @@ namespace Rock.Api.General.Model {
     public class AttributeValue : ApiModel {
         public bool IsSystem { get; set; }
 
-        public RockAttribute AttributeId { get; set; }
+        public int AttributeId { get; set; }
 
         public int EntityId { get; set; }
 
