@@ -8,6 +8,9 @@ namespace Rock.Api.General.QueryObject {
         [QOIgnore()]
         public int? EntityId { get; set; }
 
+        [QOIgnore()]
+        public int? AttributeId { get; set; }
+
         /// <summary>
         /// After the search options have been created, a filter is created to send to Rock
         /// </summary>
@@ -17,6 +20,10 @@ namespace Rock.Api.General.QueryObject {
                 var filterList = new List<string>();
                 if (EntityId.HasValue) {
                     filterList.Add("EntityId eq " + EntityId.Value);
+                }
+
+                if (AttributeId.HasValue) {
+                    filterList.Add("AttributeId eq " + AttributeId.Value);
                 }
 
                 return string.Join(" and ", filterList);
