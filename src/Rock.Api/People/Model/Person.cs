@@ -91,17 +91,7 @@ namespace Rock.Api.People.Model {
         [JsonIgnore]
         public List<AttributeValue> AttributeValues { get; set; }
 
-        [XmlIgnore]
-        [JsonIgnore]
-        public DateTime? BirthDate {
-            get {
-                if (BirthYear.HasValue) {
-                    return new DateTime(BirthYear.Value, BirthMonth.Value, BirthDay.Value);
-                }
-
-                return null;
-            }
-        }
+        public DateTime? BirthDate { get; set; }
 
         public bool ShouldSerializeGivingLeaderId() {
             return false;
