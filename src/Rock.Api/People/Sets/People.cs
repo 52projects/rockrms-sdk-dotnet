@@ -8,7 +8,10 @@ using Rock.Api.People.QueryObject;
 using Rock.Api.Model;
 
 namespace Rock.Api.People.Sets {
+
     public class People : ApiSet<Model.Person> {
+        private readonly string _baseUrl;
+
         private const string LIST_URL = "api/people/";
         private const string GET_URL = "/api/people/{0}";
         private const string SEARCH_URL = "/api/people/";
@@ -17,11 +20,16 @@ namespace Rock.Api.People.Sets {
         private const string IMAGE_URL = "/api/people/{0}/images";
         private const string IMAGE_UPDATE_URL = "/v1/people/{0}/images/{1}";
 
-        public People(string baseUrl, string apiToken) : base(baseUrl, apiToken, ContentType.JSON) { }
+        public People(string baseUrl, string apiToken) : base(baseUrl, apiToken, ContentType.JSON) {
+            _baseUrl = baseUrl;
+        }
 
         protected override string GetUrl { get { return GET_URL; } }
+
         protected override string SearchUrl { get { return SEARCH_URL; } }
+
         protected override string CreateUrl { get { return CREATE_URL; } }
+
         protected override string EditUrl { get { return EDIT_URL; } }
 
         protected override string ListUrl { get { return LIST_URL; } }
@@ -61,6 +69,28 @@ namespace Rock.Api.People.Sets {
 
         public IRockResponse<Family> GetFamily(int familyID) {
             return base.GetBySuffixUrl<Family>(string.Format("/api/groups/getfamily/{0}", familyID));
+        }
+
+        public IRockResponse<RockCollection<Person>> Login(string username, string password) {
+            var client = new RestSharp.RestClient(_baseUrl);
+            client.CookieContainer = new System.Net.CookieContainer();
+            var request = CreateRestRequest(RestSharp.Method.POST, "api/auth/login");
+            request.AddBody(new {
+                UserName = username,
+                Password = password
+            });
+            var response = client.ExecuteAsPost(request, "POST");
+
+            if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized) {
+                return null;
+            }
+            var userLogins = FindBy<UserLogin>(new UserLoginQO { UserName = username }, "api/UserLogins");
+
+            if (userLogins.IsSuccessful) {
+                return GetByID(userLogins.Data.Items[0].PersonId.ToString());
+            }
+
+            return null;
         }
     }
 }

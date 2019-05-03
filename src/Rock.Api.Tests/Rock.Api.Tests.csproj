@@ -83,6 +83,7 @@
     <Compile Include="PeopleRealm\People\SearchTests.cs" />
     <Compile Include="PeopleRealm\PhoneNumbers\CreateTests.cs" />
     <Compile Include="PeopleRealm\PhoneNumbers\ListTests.cs" />
+    <Compile Include="PeopleRealm\People\LoginTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
