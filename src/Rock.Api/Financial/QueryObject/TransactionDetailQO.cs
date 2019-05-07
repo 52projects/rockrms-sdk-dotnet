@@ -16,6 +16,9 @@ namespace Rock.Api.Financial.QueryObject {
         [QOIgnore()]
         public int? EntityId { get; set; }
 
+        [QO("loadAttributes")]
+        public bool? IncludeAttributes { get; set; }
+
         /// <summary>
         /// After the search options have been created, a filter is created to send to Rock
         /// </summary>

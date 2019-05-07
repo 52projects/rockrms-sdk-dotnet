@@ -366,11 +366,15 @@ namespace Rock.Api {
             return item.ToRockResponse();
         }
 
-        public virtual IRockResponse Delete(string id) {
+        public virtual IRockResponse Delete(int id) {
+            return Delete(string.Format(EditUrl, id));
+        }
+
+        public virtual IRockResponse Delete(string url) {
             if (string.IsNullOrWhiteSpace(EditUrl)) {
                 throw new NotImplementedException("The property EditUrl has no value on the ApiSet.");
             }
-            var request = CreateRestRequest(Method.DELETE, string.Format(EditUrl, id));
+            var request = CreateRestRequest(Method.DELETE, url);
             var item = ExecuteRequest(request);
             return item.ToRockResponse();
         }

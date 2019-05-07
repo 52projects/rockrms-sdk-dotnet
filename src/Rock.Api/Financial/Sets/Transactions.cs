@@ -44,8 +44,12 @@ namespace Rock.Api.Financial.Sets {
             return transactionResult;
         }
 
+        public IRockResponse DeleteTransactionDetail(TransactionDetail detailItem) {
+            return Delete("api/FinancialTransactionDetails/" + detailItem.Id);
+        }
+
         public IRockResponse<RockCollection<TransactionDetail>> FindDetails(int transactionId) {
-            return FindBy<TransactionDetail>(new TransactionDetailQO { TransactionId = transactionId }, "api/financialtransactiondetails");
+            return FindBy<TransactionDetail>(new TransactionDetailQO { TransactionId = transactionId, IncludeAttributes = true }, "api/financialtransactiondetails");
         }
 
         public IRockResponse<PaymentDetail> GetPaymentDetail(int paymentDetailId) {
