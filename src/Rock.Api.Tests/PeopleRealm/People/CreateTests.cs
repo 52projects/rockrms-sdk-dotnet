@@ -13,11 +13,14 @@ namespace Rock.Api.Tests.PeopleRealm.People {
         [Test]
         public void create_tests_create_person() {
             var person = new Person {
-                FirstName = "Chad",
+                FirstName = "Colin",
                 LastName = "Meyer",
-                Email = "chadmeyer@52projectsllc.com",
+                Email = "chadmeyer@me.com",
                 Gender = Api.People.Enum.Gender.Male,
-                ConnectionStatusValueId = 65
+                ConnectionStatusValueId = 65,
+                BirthDay = 10,
+                BirthYear = 1981,
+                BirthMonth = 5
             };
             var outPutXml = string.Empty;
             var result = this.RockClient.PeopleRealm.People.Create(person, out outPutXml);

@@ -44,28 +44,47 @@ namespace Rock.Api.People.Model {
         public string MiddleName { get; set; }
 
         public string LastName { get; set; }
+
         public int? SuffixValueId { get; set; }
+
         public int? PhotoId { get; set; }
+
         public int? BirthDay { get; set; }
+
         public int? BirthMonth { get; set; }
+
         public int? BirthYear { get; set; }
+
         public Gender Gender { get; set; }
+
         public int? MaritalStatusValueId { get; set; }
+
         public DateTime? AnniversaryDate { get; set; }
+
         public int? GraduationYear { get; set; }
+
         public int? GivingGroupId { get; set; }
+
         public string GivingId { get; set; }
+
         public int GivingLeaderId { get; set; }
+
         public string Email { get; set; }
+
         public bool IsEmailActive { get; set; }
+
         public string EmailNote { get; set; }
+
         public EmailPreference EmailPreference { get; set; }
 
         public CommunicationType CommunicationPreference { get; set; }
 
         public string ReviewReasonNote { get; set; }
+
         public string InactiveReasonNote { get; set; }
+
         public string SystemNote { get; set; }
+
         public int? ViewedCount { get; set; }
 
         public string TopSignalColor { get; set; }
@@ -88,7 +107,7 @@ namespace Rock.Api.People.Model {
 
         public List<PhoneNumber> PhoneNumbers { get; set; }
 
-        [JsonIgnore]
+        [JsonIgnore()]
         public List<AttributeValue> AttributeValues { get; set; }
 
         public DateTime? BirthDate { get; set; }

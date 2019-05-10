@@ -86,6 +86,7 @@
     <Compile Include="Groups\Sets\GroupLocations.cs" />
     <Compile Include="Groups\Sets\GroupMembers.cs" />
     <Compile Include="Model\ApiModel.cs" />
+    <Compile Include="Model\AttributeApiModel.cs" />
     <Compile Include="Model\BaseModel.cs" />
     <Compile Include="General\Model\DefinedType.cs" />
     <Compile Include="Model\RockCollection.cs" />
@@ -97,6 +98,7 @@
     <Compile Include="People\Enum\Gender.cs" />
     <Compile Include="Groups\Model\Group.cs" />
     <Compile Include="Groups\Model\GroupMember.cs" />
+    <Compile Include="People\Model\BackgroundCheck.cs" />
     <Compile Include="People\Model\UserLogin.cs" />
     <Compile Include="People\Model\ConnectionStatus.cs" />
     <Compile Include="People\Model\Family.cs" />
@@ -109,6 +111,7 @@
     <Compile Include="People\QueryObject\PhoneNumberQO.cs" />
     <Compile Include="Groups\Sets\Groups.cs" />
     <Compile Include="People\QueryObject\UserLoginQO.cs" />
+    <Compile Include="People\Sets\BackgroundChecks.cs" />
     <Compile Include="People\Sets\Families.cs" />
     <Compile Include="People\Sets\Locations.cs" />
     <Compile Include="People\Sets\People.cs" />
