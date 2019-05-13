@@ -12,6 +12,9 @@ namespace Rock.Api.People.QueryObject {
         public int? ID { get; set; }
 
         [QOIgnore()]
+        public int? AliasID { get; set; }
+
+        [QOIgnore()]
         public List<int> PersonIDs { get; set; }
 
         /// <summary>
@@ -30,6 +33,9 @@ namespace Rock.Api.People.QueryObject {
         [QOIgnore()]
         public string Email { get; set; }
 
+        [QO("loadAttributes")]
+        public bool? LoadAttributes { get; set; }
+
         /// <summary>
         /// After the search options have been created, a filter is created to send to Rock
         /// </summary>
@@ -42,6 +48,9 @@ namespace Rock.Api.People.QueryObject {
                 }
                 if (!string.IsNullOrEmpty(this.Email)) {
                     filterList.Add("Email eq '" + this.Email + "'");
+                }
+                if (AliasID.HasValue) {
+                    filterList.Add("PrimaryAliasId eq " + AliasID.Value);
                 }
                 if (!string.IsNullOrEmpty(MiddleName)) {
                     filterList.Add("startswith(MiddleName, '" + this.MiddleName + "')");

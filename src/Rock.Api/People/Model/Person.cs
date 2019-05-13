@@ -11,7 +11,7 @@ using Newtonsoft.Json;
 using Rock.Api.General.Model;
 
 namespace Rock.Api.People.Model {
-    public class Person : ApiModel {
+    public class Person : AttributeApiModel {
         public Person() {
             this.EmailPreference = EmailPreference.EmailAllowed;
             this.Gender = Gender.Unknown;
@@ -108,7 +108,7 @@ namespace Rock.Api.People.Model {
         public List<PhoneNumber> PhoneNumbers { get; set; }
 
         [JsonIgnore()]
-        public List<AttributeValue> AttributeValues { get; set; }
+        public List<AttributeValue> AttributeValueList { get; set; }
 
         public DateTime? BirthDate { get; set; }
 

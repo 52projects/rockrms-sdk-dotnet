@@ -44,6 +44,10 @@ namespace Rock.Api.Financial.Sets {
             return transactionResult;
         }
 
+        public IRockResponse<TransactionDetail> GetDetail(string id) {
+            return GetBySuffixUrl<TransactionDetail>("api/FinancialTransactionDetails/" + id);
+        }
+
         public IRockResponse DeleteTransactionDetail(TransactionDetail detailItem) {
             return Delete("api/FinancialTransactionDetails/" + detailItem.Id);
         }
