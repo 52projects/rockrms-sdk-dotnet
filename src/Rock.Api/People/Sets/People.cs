@@ -56,6 +56,11 @@ namespace Rock.Api.People.Sets {
             return base.FindBy(qo);
         }
 
+        public IRockResponse<Person> GetByAliasID(string aliasID) {
+            AddParameter("loadAttributes", "true");
+            return GetBySuffixUrl<Person>("api/People/GetByPersonAliasId/" + aliasID);
+        }
+
         public IRockResponse<RockCollection<Person>> FindByEmail(string email) {
             var qo = new PersonQO { Email = email };
             var response = base.FindBy(qo);
