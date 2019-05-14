@@ -8,6 +8,9 @@ namespace Rock.Api.General.QueryObject {
         [QOIgnore()]
         public SystemDefinedType? DefinedTypeId { get; set; }
 
+        [QOIgnore()]
+        public string Guid { get; set; }
+
         [QO("loadAttributes")]
         public bool? IncludeAttributes { get; set; }
 
@@ -20,6 +23,9 @@ namespace Rock.Api.General.QueryObject {
                 var filterList = new List<string>();
                 if (DefinedTypeId.HasValue) {
                     filterList.Add("DefinedTypeId eq " + (int)DefinedTypeId.Value);
+                }
+                if (!string.IsNullOrEmpty(Guid)) {
+                    filterList.Add(string.Format("Guid eq guid'{0}'", Guid));
                 }
 
                 return string.Join(" and ", filterList);

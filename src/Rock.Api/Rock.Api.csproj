@@ -72,13 +72,16 @@
     <Compile Include="General\Model\Attribute.cs" />
     <Compile Include="General\Model\AttributeValue.cs" />
     <Compile Include="General\Model\DefinedValue.cs" />
+    <Compile Include="General\Model\Workflow.cs" />
     <Compile Include="General\QueryObject\AttributeValueQO.cs" />
     <Compile Include="General\QueryObject\DefinedTypeQO.cs" />
     <Compile Include="General\QueryObject\DefinedValueQO.cs" />
     <Compile Include="General\QueryObject\AttributeQO.cs" />
+    <Compile Include="General\QueryObject\WorkflowQO.cs" />
     <Compile Include="General\Sets\Attributes.cs" />
     <Compile Include="General\Sets\AttributeValues.cs" />
     <Compile Include="General\Sets\DefinedValues.cs" />
+    <Compile Include="General\Sets\Workflows.cs" />
     <Compile Include="Groups\Enum\GroupRole.cs" />
     <Compile Include="Groups\Model\GroupLocation.cs" />
     <Compile Include="Groups\Model\GroupType.cs" />
@@ -106,6 +109,7 @@
     <Compile Include="People\Model\Location.cs" />
     <Compile Include="People\Model\Person.cs" />
     <Compile Include="People\Model\PhoneNumber.cs" />
+    <Compile Include="People\QueryObject\BackgroundCheckQO.cs" />
     <Compile Include="People\QueryObject\LocationQO.cs" />
     <Compile Include="People\QueryObject\PersonQO.cs" />
     <Compile Include="People\QueryObject\PhoneNumberQO.cs" />

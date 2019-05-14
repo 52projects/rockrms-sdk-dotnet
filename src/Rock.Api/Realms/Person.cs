@@ -13,6 +13,7 @@ namespace Rock.Api.Realms {
         private Rock.Api.People.Sets.Families _familiesSet;
         private Rock.Api.People.Sets.PhoneNumbers _phoneNumbersSet;
         private Rock.Api.People.Sets.Locations _locationSet;
+        private Rock.Api.People.Sets.BackgroundChecks _backgroundCheckSet;
         #endregion declarations
 
         #region Constructor
@@ -58,6 +59,16 @@ namespace Rock.Api.Realms {
                 }
 
                 return _familiesSet;
+            }
+        }
+
+        public Rock.Api.People.Sets.BackgroundChecks BackgroundChecks {
+            get {
+                if (_backgroundCheckSet == null) {
+                    _backgroundCheckSet = new People.Sets.BackgroundChecks(_domainUrl, _apiToken);
+                }
+
+                return _backgroundCheckSet;
             }
         }
         #endregion Sets

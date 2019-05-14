@@ -23,6 +23,9 @@ namespace Rock.Api {
         [QO("pagesize")]
         public int? PageSize { get; set; }
 
+        [QO("loadAttributes")]
+        public bool? LoadAttributes { get; set; }
+
         internal string ToQueryString() { //non-encoded query string
             StringBuilder sb = new StringBuilder();
 

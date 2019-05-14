@@ -13,6 +13,7 @@ namespace Rock.Api.Realms {
         private DefinedValues _definedValuesSet;
         private AttributeValues _attributeValuesSet;
         private Rock.Api.General.Sets.Attributes _attributesSet;
+        private Rock.Api.General.Sets.Workflows _workflowSet;
         #endregion declarations
 
         #region Constructor
@@ -49,6 +50,16 @@ namespace Rock.Api.Realms {
                 }
 
                 return _attributesSet;
+            }
+        }
+
+        public Rock.Api.General.Sets.Workflows Workflows {
+            get {
+                if (_workflowSet == null) {
+                    _workflowSet = new Api.General.Sets.Workflows(_domainUrl, _apiToken);
+                }
+
+                return _workflowSet;
             }
         }
 
