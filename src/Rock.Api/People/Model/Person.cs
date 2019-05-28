@@ -16,7 +16,7 @@ namespace Rock.Api.People.Model {
             this.EmailPreference = EmailPreference.EmailAllowed;
             this.Gender = Gender.Unknown;
             this.PhoneNumbers = new List<PhoneNumber>();
-            AttributeValues = new List<AttributeValue>();
+            AttributeValueList = new List<AttributeValue>();
         }
 
         public bool IsSystem { get; set; }

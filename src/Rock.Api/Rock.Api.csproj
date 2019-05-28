@@ -83,6 +83,7 @@
     <Compile Include="General\Sets\DefinedValues.cs" />
     <Compile Include="General\Sets\Workflows.cs" />
     <Compile Include="Groups\Enum\GroupRole.cs" />
+    <Compile Include="Groups\Enum\GroupType.cs" />
     <Compile Include="Groups\Model\GroupLocation.cs" />
     <Compile Include="Groups\Model\GroupType.cs" />
     <Compile Include="Groups\QueryObject\GroupLocationQO.cs" />
