@@ -6,7 +6,7 @@ using Rock.Api.General.Enum;
 namespace Rock.Api.General.QueryObject {
     public class AttributeQO : BaseQO {
         [QOIgnore()]
-        public EntityType? EntityTypeId { get; set; }
+        public int? EntityTypeId { get; set; }
 
         /// <summary>
         /// After the search options have been created, a filter is created to send to Rock

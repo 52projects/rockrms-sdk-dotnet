@@ -66,12 +66,12 @@
     <Compile Include="Financial\Sets\Accounts.cs" />
     <Compile Include="Financial\Sets\Pledges.cs" />
     <Compile Include="Financial\Sets\Transactions.cs" />
-    <Compile Include="General\Enum\EntityType.cs" />
     <Compile Include="General\Enum\SystemAttribute.cs" />
     <Compile Include="General\Enum\SystemDefinedType.cs" />
     <Compile Include="General\Model\Attribute.cs" />
     <Compile Include="General\Model\AttributeValue.cs" />
     <Compile Include="General\Model\DefinedValue.cs" />
+    <Compile Include="General\Model\EntityType.cs" />
     <Compile Include="General\Model\Workflow.cs" />
     <Compile Include="General\QueryObject\AttributeValueQO.cs" />
     <Compile Include="General\QueryObject\DefinedTypeQO.cs" />
@@ -81,6 +81,7 @@
     <Compile Include="General\Sets\Attributes.cs" />
     <Compile Include="General\Sets\AttributeValues.cs" />
     <Compile Include="General\Sets\DefinedValues.cs" />
+    <Compile Include="General\Sets\EntityTypes.cs" />
     <Compile Include="General\Sets\Workflows.cs" />
     <Compile Include="Groups\Enum\GroupRole.cs" />
     <Compile Include="Groups\Enum\GroupType.cs" />

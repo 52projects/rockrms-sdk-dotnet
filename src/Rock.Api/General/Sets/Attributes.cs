@@ -22,7 +22,7 @@ namespace Rock.Api.General.Sets {
 
         protected override string ListUrl { get { return LIST_URL; } }
 
-        public IRockResponse<RockCollection<Attribute>> FindByEntityTypeID(Rock.Api.General.Enum.EntityType entityType) {
+        public IRockResponse<RockCollection<Attribute>> FindByEntityTypeID(int entityType) {
             var qo = new AttributeQO { EntityTypeId = entityType };
             return FindBy(qo);
         }

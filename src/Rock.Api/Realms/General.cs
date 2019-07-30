@@ -14,6 +14,7 @@ namespace Rock.Api.Realms {
         private AttributeValues _attributeValuesSet;
         private Rock.Api.General.Sets.Attributes _attributesSet;
         private Rock.Api.General.Sets.Workflows _workflowSet;
+        private Rock.Api.General.Sets.EntityTypes _entityTypes;
         #endregion declarations
 
         #region Constructor
@@ -60,6 +61,16 @@ namespace Rock.Api.Realms {
                 }
 
                 return _workflowSet;
+            }
+        }
+
+        public Rock.Api.General.Sets.EntityTypes EntityTypes {
+            get {
+                if (_entityTypes == null) {
+                    _entityTypes = new Api.General.Sets.EntityTypes(_domainUrl, _apiToken);
+                }
+
+                return _entityTypes;
             }
         }
 
