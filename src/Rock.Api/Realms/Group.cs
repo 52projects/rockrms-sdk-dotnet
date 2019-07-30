@@ -28,6 +28,16 @@ namespace Rock.Api.Realms {
             }
         }
 
+        private Rock.Api.Groups.Sets.GroupTypes _groupTypesSet;
+        public Rock.Api.Groups.Sets.GroupTypes GroupTypes {
+            get {
+                if (_groupTypesSet == null) {
+                    _groupTypesSet = new Groups.Sets.GroupTypes(this._domainUrl, this._apiToken);
+                }
+                return _groupTypesSet;
+            }
+        }
+
 
         private Rock.Api.Groups.Sets.GroupMembers _groupMembersSet;
         public Rock.Api.Groups.Sets.GroupMembers GroupMembers {

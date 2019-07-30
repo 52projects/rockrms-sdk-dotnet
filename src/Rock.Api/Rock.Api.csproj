@@ -85,10 +85,14 @@
     <Compile Include="Groups\Enum\GroupRole.cs" />
     <Compile Include="Groups\Enum\GroupType.cs" />
     <Compile Include="Groups\Model\GroupLocation.cs" />
+    <Compile Include="Groups\Model\GroupRole.cs" />
     <Compile Include="Groups\Model\GroupType.cs" />
     <Compile Include="Groups\QueryObject\GroupLocationQO.cs" />
+    <Compile Include="Groups\QueryObject\GroupQO.cs" />
+    <Compile Include="Groups\QueryObject\GroupRoleQO.cs" />
     <Compile Include="Groups\Sets\GroupLocations.cs" />
     <Compile Include="Groups\Sets\GroupMembers.cs" />
+    <Compile Include="Groups\Sets\GroupTypes.cs" />
     <Compile Include="Model\ApiModel.cs" />
     <Compile Include="Model\AttributeApiModel.cs" />
     <Compile Include="Model\BaseModel.cs" />

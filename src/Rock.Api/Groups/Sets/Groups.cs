@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Rock.Api.Groups.Model;
 using Rock.Api.Model;
+using Rock.Api.Groups.QueryObject;
 
 namespace Rock.Api.Groups.Sets {
     public class Groups : ApiSet<Group> {
@@ -22,5 +23,10 @@ namespace Rock.Api.Groups.Sets {
         protected override string EditUrl { get { return EDIT_URL; } }
 
         protected override string ListUrl { get { return LIST_URL; } }
+
+        public IRockResponse<RockCollection<Group>> FindAll(GroupQO qo) {
+            var response = base.FindBy(qo);
+            return response;
+        }
     }
 }

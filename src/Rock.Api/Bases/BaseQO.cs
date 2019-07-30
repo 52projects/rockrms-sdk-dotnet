@@ -26,6 +26,9 @@ namespace Rock.Api {
         [QO("loadAttributes")]
         public bool? LoadAttributes { get; set; }
 
+        [QO("$top")]
+        public int? Top { get; set; }
+
         internal string ToQueryString() { //non-encoded query string
             StringBuilder sb = new StringBuilder();
 
