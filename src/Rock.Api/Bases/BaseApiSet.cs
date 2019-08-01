@@ -331,7 +331,7 @@ namespace Rock.Api {
             return item.ToRockResponse();
         }
 
-        public virtual IRockResponse<T> Update(T entity, string id) {
+        public virtual IRockResponse<T> Update(T entity, string id)  {
             if (string.IsNullOrWhiteSpace(EditUrl)) {
                 throw new NotImplementedException("The property EditUrl has no value on the ApiSet.");
             }
@@ -347,6 +347,24 @@ namespace Rock.Api {
             var item = ExecuteRequest(request);
             return item.ToRockResponse<T>();
         }
+
+        public virtual IRockResponse<int> Update<S>(S entity, string id) where S : new() {
+            if (string.IsNullOrWhiteSpace(EditUrl)) {
+                throw new NotImplementedException("The property EditUrl has no value on the ApiSet.");
+            }
+
+            var request = CreateRestRequest(Method.PUT, string.Format(EditUrl, id));
+            if (_contentType == ContentType.XML) {
+                request.AddParameter("application/xml", entity.ToXml(), ParameterType.RequestBody);
+            }
+            else if (_contentType == ContentType.JSON) {
+                request.AddParameter("application/json", Newtonsoft.Json.JsonConvert.SerializeObject(entity), ParameterType.RequestBody);
+            }
+            
+            var item = ExecuteCustomRequest<int>(request);
+            return item.ToRockResponse();
+        }
+
 
         public virtual IRockResponse<T> Update(T entity, string id, out string requestXml) {
             if (string.IsNullOrWhiteSpace(EditUrl)) {

@@ -33,9 +33,6 @@ namespace Rock.Api.People.QueryObject {
         [QOIgnore()]
         public string Email { get; set; }
 
-        [QO("loadAttributes")]
-        public bool? LoadAttributes { get; set; }
-
         /// <summary>
         /// After the search options have been created, a filter is created to send to Rock
         /// </summary>

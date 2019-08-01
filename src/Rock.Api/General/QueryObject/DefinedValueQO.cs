@@ -11,9 +11,6 @@ namespace Rock.Api.General.QueryObject {
         [QOIgnore()]
         public string Guid { get; set; }
 
-        [QO("loadAttributes")]
-        public bool? IncludeAttributes { get; set; }
-
         /// <summary>
         /// After the search options have been created, a filter is created to send to Rock
         /// </summary>

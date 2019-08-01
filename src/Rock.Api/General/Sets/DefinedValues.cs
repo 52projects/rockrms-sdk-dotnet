@@ -29,7 +29,7 @@ namespace Rock.Api.General.Sets {
         protected override string ListUrl { get { return LIST_URL; } }
 
         public IRockResponse<RockCollection<DefinedValue>> FindByType(SystemDefinedType definedType, bool loadAttributes = false) {
-            var qo = new DefinedValueQO { DefinedTypeId = definedType, IncludeAttributes = loadAttributes};
+            var qo = new DefinedValueQO { DefinedTypeId = definedType, LoadAttributes = loadAttributes};
             return FindBy(qo);
         }
     }
