@@ -9,11 +9,11 @@ using Rock.Api.Model;
 
 namespace Rock.Api.Groups.Sets {
     public class GroupLocations : ApiSet<Model.GroupLocation> {
-        private const string LIST_URL = "api/GroupLocations/";
-        private const string GET_URL = "/api/GroupLocations/{0}";
-        private const string SEARCH_URL = "/api/GroupLocations";
-        private const string CREATE_URL = "/api/locations";
-        private const string EDIT_URL = "/api/locations/{0}";
+        private const string LIST_URL = "api/grouplocations/";
+        private const string GET_URL = "/api/grouplocations/{0}";
+        private const string SEARCH_URL = "/api/grouplocations";
+        private const string CREATE_URL = "/api/grouplocations";
+        private const string EDIT_URL = "/api/grouplocations/{0}";
 
         public GroupLocations(string baseUrl, string apiToken) : base(baseUrl, apiToken, ContentType.JSON) { }
 

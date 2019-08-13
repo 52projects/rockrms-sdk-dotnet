@@ -8,6 +8,7 @@ using System.Xml;
 using System.Xml.Serialization;
 using Rock.Api.People.Enum;
 using Newtonsoft.Json;
+using Rock.Api.People.Model;
 
 
 namespace Rock.Api.Groups.Model {
@@ -21,5 +22,9 @@ namespace Rock.Api.Groups.Model {
         public bool IsMailingLocation { get; set; }
 
         public bool IsMappedLocation { get; set; }
+
+        public int Order { get; set; }
+
+        public Location Location { get; set; }
     }
 }
