@@ -58,12 +58,14 @@
     <Compile Include="Extensions\StringExtension.cs" />
     <Compile Include="Financial\Enum\TransactionType.cs" />
     <Compile Include="Financial\Model\Account.cs" />
+    <Compile Include="Financial\Model\Batch.cs" />
     <Compile Include="Financial\Model\PaymentDetail.cs" />
     <Compile Include="Financial\Model\Pledge.cs" />
     <Compile Include="Financial\Model\Transaction.cs" />
     <Compile Include="Financial\Model\TransactionDetail.cs" />
     <Compile Include="Financial\QueryObject\TransactionDetailQO.cs" />
     <Compile Include="Financial\Sets\Accounts.cs" />
+    <Compile Include="Financial\Sets\Batches.cs" />
     <Compile Include="Financial\Sets\Pledges.cs" />
     <Compile Include="Financial\Sets\Transactions.cs" />
     <Compile Include="General\Enum\SystemAttribute.cs" />
@@ -134,7 +136,6 @@
     <Compile Include="RockClient.cs" />
     <Compile Include="Sets\ApiSet.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>

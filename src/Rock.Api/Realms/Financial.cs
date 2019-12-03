@@ -13,6 +13,7 @@ namespace Rock.Api.Realms {
         private Accounts _accountsSet;
         private Pledges _pledgesSet;
         private Transactions _transactionsSet;
+        private Batches _batchesSet;
         #endregion declarations
 
         #region Constructor
@@ -46,6 +47,15 @@ namespace Rock.Api.Realms {
                     _transactionsSet = new Transactions(_domainUrl, _apiToken);
                 }
                 return _transactionsSet;
+            }
+        }
+
+        public Batches Batches {
+            get {
+                if (_batchesSet == null) {
+                    _batchesSet = new Batches(_domainUrl, _apiToken);
+                }
+                return _batchesSet;
             }
         }
     }
