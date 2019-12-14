@@ -43,7 +43,7 @@ namespace Rock.Api.Financial.Model {
 
         public bool? IsSettled { get; set; }
 
-        public int? SettledGroupId { get; set; }
+        public decimal? SettledGroupId { get; set; }
 
         public DateTime? SettledDate { get; set; }
 
