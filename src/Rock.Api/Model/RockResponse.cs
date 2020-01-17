@@ -23,7 +23,7 @@ namespace Rock.Api.Model {
 
         public bool IsSuccessful {
             get {
-                return (int)StatusCode < 300;
+                return (int)StatusCode < 300 && (int)StatusCode >= 200;
             }
         }
     }

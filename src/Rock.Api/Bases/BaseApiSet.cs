@@ -453,6 +453,7 @@ namespace Rock.Api {
         protected IRestResponse<S> ExecuteCustomRequest<S>(IRestRequest request) where S : new() {
             var client = new RestSharp.RestClient(_baseUrl);
             client.FollowRedirects = false;
+            client.Timeout = 120000;
             var response = client.Execute<S>(request);
 
             return response;

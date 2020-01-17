@@ -64,6 +64,11 @@ namespace Rock.Api.Financial.Sets {
             return Create(paymentDetail, "api/financialpaymentdetails/");
         }
 
+        public IRockResponse DeletePaymentDetails(int id) {
+            return Delete("api/financialpaymentdetails/" + id);
+        }
+
+
         public IRockResponse<int> CreateTransactionDetail(TransactionDetail transactionDetail) {
             return Create(transactionDetail, "api/financialtransactiondetails/");
         }
