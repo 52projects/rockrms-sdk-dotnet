@@ -15,6 +15,7 @@ namespace Rock.Api.People.Model {
         public Person() {
             this.EmailPreference = EmailPreference.EmailAllowed;
             this.Gender = Gender.Unknown;
+            _gender = Gender.Unknown;
             this.PhoneNumbers = new List<PhoneNumber>();
             AttributeValueList = new List<AttributeValue>();
         }
@@ -35,15 +36,58 @@ namespace Rock.Api.People.Model {
 
         public bool IsDeceased { get; set; }
 
-        public int? TitleValueId { get; set; }
+        private int? _titleValueId;
+        public int? TitleValueId { 
+            get => _titleValueId;
+            set {
+                _titleValueId = value;
+                TrackProperty("TitleValueId", value);
+            }
+        }
 
-        public string FirstName { get; set; }
+        private string _firstName;
+        public string FirstName {
+            get {
+                return _firstName;
+            }
+            set {
+                _firstName = value;
+                TrackProperty("FirstName", value);
+            }
+        }
 
-        public string NickName { get; set; }
+        private string _nickName;
+        public string NickName {
+            get {
+                return _nickName;
+            }
+            set {
+                _nickName = value;
+                TrackProperty("NickName", value);
+            }
+        }
 
-        public string MiddleName { get; set; }
+        private string _middleName;
+        public string MiddleName {
+            get {
+                return _middleName;
+            }
+            set {
+                _middleName = value;
+                TrackProperty("MiddleName", value);
+            }
+        }
 
-        public string LastName { get; set; }
+        private string _lastName;
+        public string LastName {
+            get {
+                return _lastName;
+            }
+            set {
+                _lastName = value;
+                TrackProperty("LastName", value);
+            }
+        }
 
         public int? SuffixValueId { get; set; }
 
@@ -55,7 +99,16 @@ namespace Rock.Api.People.Model {
 
         public int? BirthYear { get; set; }
 
-        public Gender Gender { get; set; }
+        private Gender _gender;
+        public Gender Gender {
+            get {
+                return _gender;
+            }
+            set {
+                _gender = value;
+                TrackProperty("Gender", value);
+            }
+        }
 
         public int? MaritalStatusValueId { get; set; }
 
@@ -69,7 +122,16 @@ namespace Rock.Api.People.Model {
 
         public int GivingLeaderId { get; set; }
 
-        public string Email { get; set; }
+        private string _email;
+        public string Email {
+            get {
+                return _email;
+            }
+            set {
+                _email = value;
+                TrackProperty("Email", value);
+            }
+        }
 
         public bool IsEmailActive { get; set; }
 
@@ -110,7 +172,19 @@ namespace Rock.Api.People.Model {
         [JsonIgnore()]
         public List<AttributeValue> AttributeValueList { get; set; }
 
-        public DateTime? BirthDate { get; set; }
+        private DateTime? _birthDate;
+        public DateTime? BirthDate {
+            get {
+                return _birthDate;
+            }
+            set {
+                _birthDate = value;
+
+                TrackProperty("BirthDay", value == null ? (int?)null : value.Value.Day);
+                TrackProperty("BirthMonth", value == null ? (int?)null : value.Value.Month);
+                TrackProperty("BirthYear", value == null ? (int?)null : value.Value.Year);
+            }
+        }
 
         public bool ShouldSerializeGivingLeaderId() {
             return false;

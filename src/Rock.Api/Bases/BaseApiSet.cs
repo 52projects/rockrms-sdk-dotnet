@@ -9,11 +9,14 @@ using Rock.Api.Extensions;
 using Rock.Api.Exceptions;
 using System.IO;
 using Rock.Api.Model;
+using System.Net.Http;
+using System.Net.Http.Headers;
 
 
 namespace Rock.Api {
     public abstract class BaseApiSet<T> where T : new() {
         #region Properties
+        private readonly string _apiToken;
         private readonly string _baseUrl;
         private readonly ContentType _contentType;
         private readonly IDictionary<string, string> _requestHeaders;
@@ -68,6 +71,7 @@ namespace Rock.Api {
         protected BaseApiSet(string baseUrl, string apiToken, ContentType contentType) {
             _baseUrl = baseUrl;
             _contentType = contentType;
+            _apiToken = apiToken;
 
             _requestHeaders = new Dictionary<string, string>();
             _requestHeaders.Add("Authorization-Token", apiToken);
@@ -348,6 +352,17 @@ namespace Rock.Api {
             return item.ToRockResponse<T>();
         }
 
+        public virtual async Task<IRockResponse<T>> PatchAsync(string entity, string id) {
+            using (var http = CreateClient()) {
+                using (var content = new StringContent(entity, Encoding.UTF8, "application/json")) {
+                    using (var request = new HttpRequestMessage(new HttpMethod("PATCH"), string.Format(EditUrl, id)) { Content = content }) {
+                        var result = await http.SendAsync(request);
+                        return await ConvertResponseAsync<T>(result);
+                    }
+                }
+            }
+        }
+
         public virtual IRockResponse<int> Update<S>(S entity, string id) where S : new() {
             if (string.IsNullOrWhiteSpace(EditUrl)) {
                 throw new NotImplementedException("The property EditUrl has no value on the ApiSet.");
@@ -535,6 +550,31 @@ namespace Rock.Api {
             finally {
                 stream.Position = originalPosition;
             }
+        }
+
+        private HttpClient CreateClient() {
+            var httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri(_baseUrl);
+            httpClient.DefaultRequestHeaders.Accept.Clear();
+            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            httpClient.DefaultRequestHeaders.Add("Authorization-Token", _apiToken);
+            return httpClient;
+        }
+
+        private async Task<IRockResponse<S>> ConvertResponseAsync<S>(HttpResponseMessage response) where S : new() {
+            var rockResponse = new RockResponse<S> {
+                StatusCode = response.StatusCode,
+                JsonResponse = await response.Content.ReadAsStringAsync()
+            };
+
+            if (!string.IsNullOrEmpty(rockResponse.JsonResponse) && (int)response.StatusCode > 300) {
+                var responseError = Newtonsoft.Json.JsonConvert.DeserializeObject<dynamic>(rockResponse.JsonResponse);
+                rockResponse.ErrorMessage = responseError.error_message;
+            }
+            else {
+                rockResponse.Data = Newtonsoft.Json.JsonConvert.DeserializeObject<S>(rockResponse.JsonResponse);
+            }
+            return rockResponse;
         }
 
         private readonly Dictionary<string, string> MIMETypesDictionary = new Dictionary<string, string>
