@@ -1,7 +1,6 @@
 ﻿using Rock.Api.Model;
 using System;
 
-
 namespace Rock.Api.Financial.Model {
     public class Pledge : ApiModel {
         public int PersonAliasId { get; set; }

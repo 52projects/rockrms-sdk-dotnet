@@ -29,6 +29,16 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Sandbox|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Sandbox\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\..\..\52projects-library\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -59,6 +69,7 @@
     <Compile Include="Financial\Enum\TransactionType.cs" />
     <Compile Include="Financial\Model\Account.cs" />
     <Compile Include="Financial\Model\Batch.cs" />
+    <Compile Include="Financial\Model\FinancialGateway.cs" />
     <Compile Include="Financial\Model\PaymentDetail.cs" />
     <Compile Include="Financial\Model\Pledge.cs" />
     <Compile Include="Financial\Model\Transaction.cs" />
@@ -66,6 +77,7 @@
     <Compile Include="Financial\QueryObject\TransactionDetailQO.cs" />
     <Compile Include="Financial\Sets\Accounts.cs" />
     <Compile Include="Financial\Sets\Batches.cs" />
+    <Compile Include="Financial\Sets\FinancialGateways.cs" />
     <Compile Include="Financial\Sets\Pledges.cs" />
     <Compile Include="Financial\Sets\Transactions.cs" />
     <Compile Include="General\Enum\SystemAttribute.cs" />
@@ -91,6 +103,7 @@
     <Compile Include="Groups\Model\GroupRole.cs" />
     <Compile Include="Groups\Model\GroupType.cs" />
     <Compile Include="Groups\QueryObject\GroupLocationQO.cs" />
+    <Compile Include="Groups\QueryObject\GroupMemberQO.cs" />
     <Compile Include="Groups\QueryObject\GroupQO.cs" />
     <Compile Include="Groups\QueryObject\GroupRoleQO.cs" />
     <Compile Include="Groups\Sets\GroupLocations.cs" />

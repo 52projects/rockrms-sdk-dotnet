@@ -14,6 +14,7 @@ namespace Rock.Api.Realms {
         private Pledges _pledgesSet;
         private Transactions _transactionsSet;
         private Batches _batchesSet;
+        private FinancialGateways _financialGateways;
         #endregion declarations
 
         #region Constructor
@@ -22,7 +23,7 @@ namespace Rock.Api.Realms {
             _apiToken = apiToken;
         }
         #endregion Constructor
-        
+
         public Accounts Accounts {
             get {
                 if (_accountsSet == null) {
@@ -56,6 +57,15 @@ namespace Rock.Api.Realms {
                     _batchesSet = new Batches(_domainUrl, _apiToken);
                 }
                 return _batchesSet;
+            }
+        }
+
+        public FinancialGateways FinancialGateways {
+            get {
+                if (_financialGateways == null) {
+                    _financialGateways = new FinancialGateways(_domainUrl, _apiToken);
+                }
+                return _financialGateways;
             }
         }
     }
