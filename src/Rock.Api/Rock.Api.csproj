@@ -70,6 +70,7 @@
     <Compile Include="Financial\Model\Account.cs" />
     <Compile Include="Financial\Model\Batch.cs" />
     <Compile Include="Financial\Model\FinancialGateway.cs" />
+    <Compile Include="Financial\Model\FinancialTransactionRefund.cs" />
     <Compile Include="Financial\Model\PaymentDetail.cs" />
     <Compile Include="Financial\Model\Pledge.cs" />
     <Compile Include="Financial\Model\Transaction.cs" />

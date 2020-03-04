@@ -15,7 +15,8 @@ namespace Rock.Api.Financial.Sets {
         private const string CREATE_URL = "/api/financialtransactions";
         private const string EDIT_URL = "/api/financialtransactions/{0}";
 
-        public Transactions(string baseUrl, string apiToken) : base(baseUrl, apiToken, ContentType.JSON) { }
+        public Transactions(string baseUrl, string apiToken) : base(baseUrl, apiToken, ContentType.JSON) {
+        }
 
         protected override string GetUrl { get { return GET_URL; } }
         protected override string SearchUrl { get { return SEARCH_URL; } }
@@ -68,9 +69,12 @@ namespace Rock.Api.Financial.Sets {
             return Delete("api/financialpaymentdetails/" + id);
         }
 
-
         public IRockResponse<int> CreateTransactionDetail(TransactionDetail transactionDetail) {
             return Create(transactionDetail, "api/financialtransactiondetails/");
+        }
+
+        public IRockResponse<int> CreateTransactionRefund(FinancialTransactionRefund refund) {
+            return Create(refund, "api/FinancialTransactionRefunds/");
         }
     }
 }
