@@ -76,5 +76,9 @@ namespace Rock.Api.Financial.Sets {
         public IRockResponse<int> CreateTransactionRefund(FinancialTransactionRefund refund) {
             return Create(refund, "api/FinancialTransactionRefunds/");
         }
+
+        public IRockResponse<RockCollection<FinancialTransactionRefund>> findTransactionRefunds() {
+            return FindBy<FinancialTransactionRefund>(new TransactionDetailQO { RecordsPerPage = 1000, IncludeAttributes = true }, "api/FinancialTransactionRefunds/");
+        }
     }
 }
