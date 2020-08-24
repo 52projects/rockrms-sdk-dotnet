@@ -13,6 +13,12 @@ namespace Rock.Api.Groups.QueryObject {
         [QOIgnore()]
         public int? ParentGroupId { get; set; }
 
+        [QOIgnore()]
+        public int? GroupTypeId { get; set; }
+
+        [QOIgnore()]
+        public string Name { get; set; }
+
         /// <summary>
         /// After the search options have been created, a filter is created to send to Rock
         /// </summary>
@@ -26,6 +32,14 @@ namespace Rock.Api.Groups.QueryObject {
 
                 if (this.ParentGroupId.HasValue) {
                     filterList.Add("ParentGroupId eq " + this.ParentGroupId.Value);
+                }
+
+                if (this.GroupTypeId.HasValue) {
+                    filterList.Add("GroupTypeId eq " + this.GroupTypeId.Value);
+                }
+
+                if (!string.IsNullOrEmpty(Name)) {
+                    filterList.Add("Name eq '" + this.Name + "'");
                 }
 
                 return string.Join(" and ", filterList);
