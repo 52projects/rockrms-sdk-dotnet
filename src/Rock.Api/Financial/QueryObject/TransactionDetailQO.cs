@@ -7,6 +7,7 @@ using System.Text;
 namespace Rock.Api.Financial.QueryObject {
     public class TransactionDetailQO : BaseQO {
         public TransactionDetailQO() {
+            this.ExpandEntities.Add("TransactionDetails");
             AccountIds = new List<int>();
         }
 
