@@ -19,12 +19,12 @@ namespace Rock.Api {
 
             var request = CreateRestRequest(Method.GET, ListUrl);
 
-            if (page.HasValue) {
-                request.AddParameter("page", page.Value);
-            }
+            if (page.HasValue && pageSize.HasValue) {
+                request.AddParameter("$top", pageSize.Value);
 
-            if (pageSize.HasValue) {
-                request.AddParameter("pageSize", pageSize.Value);
+                if (page.Value > 1) {
+                    request.AddParameter("$skip", pageSize.Value * (page.Value - 1));
+                }
             }
 
             var item = base.ExecuteListRequest(request);

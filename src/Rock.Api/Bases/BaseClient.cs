@@ -1,12 +1,4 @@
-﻿using RestSharp;
-using RestSharp.Authenticators;
-using System;
-using System.Linq;
-using System.Net;
-using System.Collections.Generic;
-using RestSharp.Extensions.MonoHttp;
-using Rock.Api.Exceptions;
-using Newtonsoft.Json.Linq;
+﻿using System.Collections.Generic;
 
 namespace Rock.Api {
     public class BaseClient {

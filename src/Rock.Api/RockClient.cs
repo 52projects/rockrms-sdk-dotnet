@@ -24,7 +24,7 @@ namespace Rock.Api {
         /// <param name="domainUrl">The root domain of where rock is installed. ex: rock.rocksolidchurchdemo.com</param>
         /// <param name="apiToken">the API token that was created from Rock</param>
         public RockClient(string domainUrl, string apiToken) {
-            ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
+            //System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls12 | System.Net.SecurityProtocolType.Tls11;
             this._domainUrl = domainUrl;
             this._apiToken = apiToken;
 

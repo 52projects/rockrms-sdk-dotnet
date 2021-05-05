@@ -6,8 +6,8 @@ using Rock.Api;
 namespace Rock.Api.Tests {
     [TestFixture]
     public class Base {
-        private const string _apiToken = "Kd8LicOdwqGkqyO1prcERm8c";
-        private const string _domainUrl = "https://rock.dev.focusmissions.com";
+        private const string _apiToken = "2prRCuo9fEXeFuWs1Gl6EiTQ";
+        private const string _domainUrl = "http://localhost:6229";
         internal RockClient RockClient;
 
         [OneTimeSetUp]
